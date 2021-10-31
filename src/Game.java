@@ -4,21 +4,15 @@ public class Game {
     HashMap<String,Location> locations;
     Location actualPlace;
     GUI gui;
+    Player player;
     //ChoiceHandler choiceHandler;
     public Game() {
         this.gui = new GUI();
+        this.player = new Player();// Estos valores se definen con JSON
 
         //choiceHandler = new ChoiceHandler();
 
     }
-
-//    private HashMap<String,Location> setUpPlaces() {
-//        HashMap<String,Location> temp = new HashMap<>();
-//        temp.put("Ciudad",new City(new String[]{"Tienda", "Herrero", "Ir a la Mision"}));
-//        //temp.put("tienda", new Tienda(..));
-//        //...
-//        return temp;
-//    }
 
 
     public void setLocations(HashMap<String, Location> locations) {
