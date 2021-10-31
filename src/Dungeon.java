@@ -1,11 +1,19 @@
-public class Dungeon {
+public class Dungeon extends Location{
 
-    String [] options;
-    String mainString;
-    Game rpg;
+    public Dungeon(String[] options,  Game rpg) { super(options, rpg); }
 
-    public Dungeon(String[] options,  Game rpg) {
-        this.options = options;
-        this.rpg = rpg;
+    @Override
+    void command1() {
+
+    }
+
+    @Override
+    void command2() {
+
+    }
+
+    @Override
+    void command3() {
+
     }
 }
