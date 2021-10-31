@@ -4,7 +4,7 @@ import java.util.*;
 
 public class GUI {
     private String mainText;
-    private ArrayList<JButton> conmmands;
+    private ArrayList<JButton> commands;
     private int health;
     private int attack;
     private int gold;
@@ -25,14 +25,14 @@ public class GUI {
 
     public void setUpButtons(Location place) {
         //ArrayList<JButton> temp = new ArrayList<>();
-        this.conmmands = new ArrayList<>();
+        this.commands = new ArrayList<>();
         for(int i = 0; i < nButtons; i++) {
             JButton btn = new JButton("");
             this.actionListener = place;
             btn.addActionListener(actionListener);
             btn.setActionCommand("c"+(i+1));
             //hacer todo el setup del boon
-            this.conmmands.add(btn);
+            this.commands.add(btn);
 
         }
     }
@@ -44,7 +44,7 @@ public class GUI {
     public void setButtons(Location place){
         String[] options = place.options;
         for(int i = 0; i < options.length; i++) {
-            JButton btn = this.conmmands.get(i);
+            JButton btn = this.commands.get(i);
             btn.setText(options[i]);
 
             //update action listener according to the place
