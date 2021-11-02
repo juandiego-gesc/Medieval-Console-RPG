@@ -1,7 +1,11 @@
+package Models.Locations;
+
+import Controllers.Game;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-abstract class Location implements ActionListener {
+public abstract class Location implements ActionListener {
     String[] options;
     String mainString;
     Game rpg;
@@ -22,4 +26,16 @@ abstract class Location implements ActionListener {
     abstract void command1();
     abstract void command2();
     abstract void command3();
+
+    public String[] getOptions() {
+        return options;
+    }
+
+    public String getMainString() {
+        return mainString;
+    }
+
+    public Game getRpg() {
+        return rpg;
+    }
 }

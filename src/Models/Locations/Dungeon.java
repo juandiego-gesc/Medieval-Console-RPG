@@ -1,3 +1,7 @@
+package Models.Locations;
+
+import Controllers.Game;
+
 public class Dungeon extends Location{
 
     public Dungeon(String[] options,  Game rpg) { super(options, rpg); }

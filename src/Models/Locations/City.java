@@ -1,3 +1,7 @@
+package Models.Locations;
+
+import Controllers.Game;
+
 public class City extends Location{
 
     public City(String[] options, Game rpg) {
@@ -7,7 +11,7 @@ public class City extends Location{
     @Override
     void command1() {
         //Tienda
-        rpg.setActualPlace("tienda");
+        this.rpg.setActualPlace("tienda");
         // esto podria modificar una variable en el manager que determine el lugar
         //de pronto un hashmap
     }

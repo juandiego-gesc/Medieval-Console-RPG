@@ -1,7 +1,13 @@
+package Controllers;
+
+import Models.Locations.Location;
+import Models.*;
+import View.GUI;
+
 import java.util.*;
 
 public class Game {
-    HashMap<String,Location> locations;
+    HashMap<String, Location> locations;
     Location actualPlace;
     GUI gui;
     Player player;
