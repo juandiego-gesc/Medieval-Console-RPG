@@ -10,7 +10,7 @@ public class City extends Location{
 
     @Override
     void command1() {
-        //Tienda
+        //Models.Locations.Tienda
         this.rpg.setActualPlace("tienda");
         // esto podria modificar una variable en el manager que determine el lugar
         //de pronto un hashmap
