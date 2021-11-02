@@ -1,5 +1,7 @@
 package Models.Locations;
 
+import Controllers.Game;
+
 public class Tienda extends Location{
 
     public Tienda(String[] options,  Game rpg) { super(options, rpg); }
