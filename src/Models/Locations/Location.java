@@ -13,6 +13,7 @@ public abstract class Location implements ActionListener {
     public Location(String[] options, Game rpg) {
         this.options = options;
         this.rpg = rpg;
+        mainString = "This is a test";
     }
     public void actionPerformed(ActionEvent event){
         String choice = event.getActionCommand();

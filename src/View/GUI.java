@@ -13,9 +13,10 @@ public class GUI {
     int windowH = 600;
     Container container;
 
-    JPanel mainTextPanel;
+    JPanel mainTextPanel, choiceButtonPanel;
     JTextArea mainTextArea;
     Font normalFont;
+    Color textBackground;
 
     private String mainText;
     private ArrayList<JButton> commands;
@@ -38,17 +39,22 @@ public class GUI {
 
         //Game Screen Set up
         Rectangle mainTextRectangle = new Rectangle(100, 100, windowW - 200, windowH - 400);
+        textBackground = new Color(255,255,255, 50);
         mainTextPanel = new JPanel();
         mainTextPanel.setBounds(mainTextRectangle);
-        mainTextPanel.setBackground(new Color(255,255,255, 50));
+        mainTextPanel.setBackground(textBackground);
         container.add(mainTextPanel);
 
-        mainTextArea = new JTextArea();
+        mainTextArea = new JTextArea("This is a test");
         mainTextArea.setBounds(mainTextRectangle);
-        //mainTextArea.setBackground(Color.BLACK);
+        mainTextArea.setBackground(Color.BLACK);
         mainTextArea.setForeground(Color.white);
         mainTextArea.setFont(normalFont);
         mainTextArea.setLineWrap(true);
+        mainTextPanel.add(mainTextArea);
+
+        choiceButtonPanel = new JPanel();
+        choiceButtonPanel.setBounds(250, 100 + windowH - 300, 300, 150);
 
 
 
@@ -73,12 +79,16 @@ public class GUI {
         this.commands = new ArrayList<>();
         for(int i = 0; i < nButtons; i++) {
             JButton btn = new JButton("");
+            btn.setBackground(textBackground);
+            btn.setForeground(Color.white);
+            btn.setFont(normalFont);
+            btn.setFocusPainted(false);
             this.actionListener = place;
             btn.addActionListener(actionListener);
             btn.setActionCommand("c"+(i+1));
             //hacer todo el setup del boon
             this.commands.add(btn);
-
+            this.choiceButtonPanel.add(btn);
         }
     }
 
