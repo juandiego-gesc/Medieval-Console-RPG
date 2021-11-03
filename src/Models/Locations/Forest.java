@@ -2,9 +2,16 @@ package Models.Locations;
 
 import Controllers.Game;
 
-public class Forest extends Location{
+import java.util.Arrays;
 
-    public Forest(String[] options,  Game rpg) { super(options, rpg); }
+public class Forest extends Location {
+
+    public Forest(String[] options, Game rpg) {
+        super(options, rpg);
+
+        System.out.println("Has entrado en la el bosque, el hogar de los goblins... Ten cuidado");
+    }
+
 
     @Override
     void command1() {

@@ -6,6 +6,7 @@ public class Plains extends Location{
 
     public Plains(String[] options,  Game rpg) {
         super(options, rpg);
+        System.out.println("Has entrado en la el las llanuras, donde las manadas de lobo les gusta cazar... Ten cuidado");
         mainString = "A la verga wey, un lobo!";
     }
 
