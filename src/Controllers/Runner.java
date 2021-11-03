@@ -27,5 +27,23 @@ public class Runner {
         return temp;
     }
     //setup places
+    public void City{
 
+    }
+
+    public void Tienda() {
+
+    }
+    public void Dugeon{
+
+    }
+    public void Forest{
+
+    }
+    public void Plains{
+
+    }
+    public void Combat{
+
+    }
 }

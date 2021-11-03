@@ -15,6 +15,7 @@ public abstract class Location implements ActionListener {
         this.rpg = rpg;
         mainString = "This is a test";
     }
+
     public void actionPerformed(ActionEvent event){
         String choice = event.getActionCommand();
         switch (choice){
@@ -31,11 +32,9 @@ public abstract class Location implements ActionListener {
     public String[] getOptions() {
         return options;
     }
-
     public String getMainString() {
         return mainString;
     }
-
     public Game getRpg() {
         return rpg;
     }
