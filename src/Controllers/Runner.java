@@ -13,9 +13,9 @@ public class Runner {
     }
     private static HashMap<String, Location> setUpPlaces(Game rpg) {
         HashMap<String,Location> temp = new HashMap<>();
-        temp.put("Ciudad",new City(new String[]{"Models.Locations.Tienda", "Herrero", "Ir a la Mision"}, rpg));
+        temp.put("Ciudad",new City(new String[]{"Tienda", "Herrero", "Ir a la Mision"}, rpg));
 
-        temp.put("tienda", new Tienda(rpg));
+        temp.put("tienda", new Shop(new String[]{"Comprar", "Vender", "Volver"},rpg));
 
         temp.put("Mazmorra",new Dungeon(new String[]{"Atacar", "Avanzar", "Volver"}, rpg));
 
