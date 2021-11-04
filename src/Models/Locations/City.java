@@ -13,7 +13,7 @@ public class City extends Location{
     void command1() {
         //Models.Locations.Tienda
         //this.rpg.setActualPlace("tienda");
-        System.out.println("Pa la tienda");
+        System.out.println("Ir a la tienda");
         // esto podria modificar una variable en el manager que determine el lugar
         //de pronto un hashmap
     }
@@ -21,14 +21,14 @@ public class City extends Location{
     @Override
     void command2() {
         //Herrero
-        System.out.println("Pal Herrero");
+        System.out.println("Ir al Herrero");
         //this.rpg.setActualPlace("Herrero");
     }
 
     @Override
     void command3() {
         //Ir a Mision
-        System.out.println("Pa las plains");
+        System.out.println("Ir a las planicies");
         this.rpg.setActualPlace("Plains");
     }
 }

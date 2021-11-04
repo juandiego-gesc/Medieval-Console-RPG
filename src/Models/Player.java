@@ -1,7 +1,7 @@
 package Models;
 
-import Models.Items.Item;
-import View.GUI;
+import Controllers.Item;
+import Models.Locations.Location;
 
 import java.util.HashMap;
 
