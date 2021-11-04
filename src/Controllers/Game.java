@@ -3,6 +3,7 @@ package Controllers;
 import Models.Items.Item;
 import Models.Locations.Location;
 import Models.*;
+import Models.Locations.TitleScreen;
 import View.GUI;
 
 import java.io.BufferedReader;
@@ -17,14 +18,17 @@ import java.util.*;
 
 public class Game {
     HashMap<String, Location> locations;
+    Location titleScreen;
     HashMap<Integer, Item> items;
     Location actualPlace;
     GUI gui;
     Player player;
+    String fileName = "src/SavedGame.txt";
     //ChoiceHandler choiceHandler;
     public Game() {
-        this.gui = new GUI();
-        this.player = new Player();// Estos valores se definen con JSON
+        titleScreen = new TitleScreen(new String[]{"Start", "Continue"}, this);
+        this.gui = new GUI(titleScreen);
+        this.player = new Player(gui);// Estos valores se definen con JSON
     }
 
 
@@ -37,14 +41,25 @@ public class Game {
         gui.setMainText(actualPlace);
         gui.setButtons(actualPlace);
     }
+    public void setActualPlace(Location place){
+        this.actualPlace = place;
+        gui.setMainText(actualPlace);
+        gui.setButtons(actualPlace);
+    }
 
     public void setItems(HashMap<Integer, Item> items) {
         this.items = items;
     }
 
+    public void startGame(){
+        gui.visibleScreen(true);
+//        gui.setUpButtons(locations.get("Ciudad"));
+//        setActualPlace("Ciudad");
+    }
+
     public void loadPlayerData(){
         try{
-            BufferedReader br = new BufferedReader(new FileReader("/resources/SavedGame.txt"));
+            BufferedReader br = new BufferedReader(new FileReader(fileName));
 
             HashMap<Item, Integer> newInv = new HashMap<>();
 
@@ -55,9 +70,9 @@ public class Game {
                 newInv.put(current, amount);
             }
             player.inventory = newInv;
-            player.hp = Integer.parseInt(br.readLine());
-            player.attack = Integer.parseInt(br.readLine());
-            player.gold = Integer.parseInt(br.readLine());
+            player.setHp(Integer.parseInt(br.readLine()));
+            player.setAttack(Integer.parseInt(br.readLine()));
+            player.setGold(Integer.parseInt(br.readLine()));
             player.gameState = Integer.parseInt(br.readLine());
             br.close();
         }catch (Exception e){
@@ -67,19 +82,25 @@ public class Game {
     }
     public void savePlayerData(){
         try{
-            Path file = Paths.get("/resources/SavedGame.txt");
-            Files.newBufferedWriter(file, StandardOpenOption.TRUNCATE_EXISTING);
-            BufferedWriter bw = new BufferedWriter(new FileWriter("/resources/SavedGame.txt"));
+            //Path file = Paths.get(fileName);
+            //Files.newBufferedWriter(file, StandardOpenOption.TRUNCATE_EXISTING);
+            BufferedWriter bw = new BufferedWriter(new FileWriter(fileName));
 
+            bw.write("This is a test 2");
+            bw.newLine();
             for(Item key : player.inventory.keySet()){
                 bw.write(key.getId());
+                bw.newLine();
                 bw.write(player.inventory.get(key));
+                bw.newLine();
             }
-            bw.write("" + player.hp);
-            bw.write("" + player.attack);
-            bw.write("" + player.gold);
-            bw.write("" + player.gameState);
+            bw.write("" + player.hp);bw.newLine();
+            bw.write("" + player.attack);bw.newLine();
+            bw.write("" + player.gold);bw.newLine();
+            bw.write("" + player.gameState);bw.newLine();
             bw.close();
+
+            System.out.println("Game saved successfully");
         }catch (Exception e){
             System.out.println("Unable to save");
         }

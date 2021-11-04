@@ -12,6 +12,7 @@ public class Runner {
         rpg.setItems(setUpItems());
         rpg.gui.setUpButtons(rpg.locations.get("Ciudad"));
         rpg.setActualPlace("Ciudad");
+
     }
 
     private static HashMap<Integer, Item> setUpItems() {
