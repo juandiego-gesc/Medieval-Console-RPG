@@ -9,7 +9,7 @@ public class Forest extends Location {
     public Forest(String[] options, Game rpg) {
         super(options, rpg);
 
-        System.out.println("Has entrado en la el bosque, el hogar de los goblins... Ten cuidado");
+        System.out.println("Has entrado en el bosque, el hogar de los goblins... Ten cuidado");
     }
 
 

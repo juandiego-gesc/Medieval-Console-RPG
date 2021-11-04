@@ -1,7 +1,11 @@
 package Controllers;
 
+import Models.Items.HealingItem;
 import Models.Items.Item;
+import Models.Items.Loot;
+import Models.Items.Weapon;
 import Models.Locations.*;
+
 
 import java.util.HashMap;
 
@@ -17,6 +21,12 @@ public class Runner {
 
     private static HashMap<Integer, Item> setUpItems() {
         HashMap<Integer,Item> temp = new HashMap<>();
+        temp.put(1, new HealingItem()); //pocion LVL 1
+        temp.put(2, new HealingItem()); //pocion LVL 2
+        temp.put(3, new Loot()); //Piel de Lobo
+        temp.put(4, new Loot()); //Carne
+        temp.put(5, new Weapon()); //Espada de madera
+        temp.put(6, new Weapon()); //Espada de hierro
         // Aca los items van a ser creados con un ID en el hashMap para facilitar el update del jugador
         // los IDs correspondientes a cada item estan en el UML
         return temp;
