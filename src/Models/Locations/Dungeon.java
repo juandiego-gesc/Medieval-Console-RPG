@@ -6,7 +6,8 @@ public class Dungeon extends Location{
 
     public Dungeon(String[] options,  Game rpg) {
         super(options, rpg);
-        System.out.println("Has entrado en las catacumbas, abran muchos enemigos por aquí... Ten cuidado");}
+        System.out.println("Has entrado en las catacumbas, abran muchos enemigos por aquí... Ten cuidado");
+    }
 
     @Override
     void command1() {
