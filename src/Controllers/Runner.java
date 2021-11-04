@@ -25,15 +25,15 @@ public class Runner {
         HashMap<String,Location> temp = new HashMap<>();
         temp.put("Ciudad",new City(new String[]{"Tienda", "Herrero", "Ir a la Mision"}, rpg));
 
-        temp.put("tienda", new Shop(new String[]{"Comprar", "Vender", "Volver"},rpg));
+        temp.put("Tienda", new Shop(new String[]{"Comprar", "Vender", "Volver"},rpg));
 
         temp.put("Mazmorra",new Dungeon(new String[]{"Atacar", "Avanzar", "Volver"}, rpg));
 
-        temp.put("Forest",new Forest(new String[]{"Atacar", "Avanzar", "Volver"}, rpg));
+        temp.put("Bosque",new Forest(new String[]{"Atacar", "Avanzar", "Volver"}, rpg));
 
-        temp.put("Plains",new Plains(new String[]{"Atacar", "Avanzar", "Volver"}, rpg));
+        temp.put("Llanuras",new Plains(new String[]{"Atacar", "Avanzar", "Volver"}, rpg));
 
-        temp.put("Combat",new Combat(new String[]{"Atacar", "Avanzar", "Volver"}, rpg));
+        temp.put("Combate",new Combat(new String[]{"Atacar", "Avanzar", "Volver"}, rpg));
         return temp;
     }
 
