@@ -21,5 +21,11 @@ public class Combat extends Location {
     void command3() {
 
     }
+    public void rewardPlayer(){
+
+    }
+    public void playerDeath(){
+
+    }
 }
 
