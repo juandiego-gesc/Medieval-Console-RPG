@@ -9,27 +9,29 @@ import java.awt.event.ActionListener;
 import java.util.*;
 
 public class GUI {
-    JFrame window;
+    public JFrame window;
     int windowW = 800;
     int windowH = 600;
-    Container container;
+    public Container gameContainer, titleContainer;
 
+    JPanel titleNamePanel, titleButtonPanel;
     JPanel mainTextPanel, choiceButtonPanel, playerPanel, inventoryBtnPanel;
+    JLabel titleNameLabel;
     JLabel hpLabel, hpLabelNum, attackLabel, attackLabelNum, goldLabel, goldLabelNum;
     JTextArea mainTextArea;
-    Font normalFont;
+    Font normalFont, titleFont;
     Color textBackground;
 
     private String mainText;
     private ArrayList<JButton> commands;
-    private JButton inventory;
+    private JButton startButton,continueButton, inventory;
     private int health = 100;
     private int attack;
     private int gold;
     private final int nButtons = 3;
     private ActionListener actionListener; //falta inicializar
 
-    public GUI() {
+    public GUI(Location titleScreen) {
         window = new JFrame();
         window.setSize(windowW, windowH);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -38,89 +40,69 @@ public class GUI {
         window.setVisible(true);
         window.setResizable(false);
 
-        container = window.getContentPane();
-        normalFont = new Font("Consolas",Font.PLAIN,30);
+        titleContainer = window.getContentPane();
+        gameContainer = window.getContentPane();
+        normalFont = new Font("1942 report",Font.PLAIN,30);
+        titleFont = new Font("1942 report",Font.PLAIN,90);
 
-        //Game Screen Set up
-        Rectangle mainTextRectangle = new Rectangle(100, 100, windowW - 200, windowH - 400);
-        textBackground = Color.BLACK;//new Color(255,255,255, 50);
+        setTitleScreen(titleScreen);
+        setGameScreen();
+        visibleScreen(false);
 
-        mainTextPanel = new JPanel();
-        mainTextPanel.setBounds(mainTextRectangle);
-        mainTextPanel.setBackground(textBackground);
-        container.add(mainTextPanel);
+    }
 
-        mainTextArea = new JTextArea("This is a test");
-        mainTextArea.setBounds(mainTextRectangle);
-        mainTextArea.setBackground(textBackground);
-        mainTextArea.setForeground(Color.white);
-        mainTextArea.setFont(normalFont);
-        mainTextArea.setLineWrap(true);
-        mainTextPanel.add(mainTextArea);
+    public void visibleScreen(boolean gameScreen) {
+        mainTextPanel.setVisible(gameScreen);
+        choiceButtonPanel.setVisible(gameScreen);
+        playerPanel.setVisible(gameScreen);
+        inventoryBtnPanel.setVisible(gameScreen);
 
-        choiceButtonPanel = new JPanel();
-        choiceButtonPanel.setBounds(250, 100 + windowH - 340, 300, 150);
-        choiceButtonPanel.setBackground(Color.black);
-        choiceButtonPanel.setLayout(new GridLayout(nButtons, 1));
-        container.add(choiceButtonPanel);
+        titleNamePanel.setVisible(!gameScreen);
+        titleButtonPanel.setVisible(!gameScreen);
+
+    }
+
+    private void setTitleScreen(Location titleScreen) {
 
 
 
-        playerPanel = new JPanel();
-        playerPanel.setBounds(50, 15, 700, 50);
-        playerPanel.setBackground(Color.black);
-        //playerPanel.setLayout(new GridLayout(1,5));
-        container.add(playerPanel);
 
-        hpLabel = new JLabel("HP: 100             ");
-        hpLabel.setFont(normalFont);
-        hpLabel.setForeground(Color.white);
-        playerPanel.add(hpLabel);
-//        hpLabelNum = new JLabel();
-//        hpLabelNum.setFont(normalFont);
-//        hpLabelNum.setForeground(Color.white);
-//        playerPanel.add(hpLabelNum);
-
-        attackLabel = new JLabel("Attack: 999             ");
-        attackLabel.setFont(normalFont);
-        attackLabel.setForeground(Color.white);
-        playerPanel.add(attackLabel);
-//        attackLabelNum = new JLabel();
-//        playerPanel.add(attackLabelNum);
-
-        goldLabel = new JLabel("Gold: 9999");
-        goldLabel.setFont(normalFont);
-        goldLabel.setForeground(Color.white);
-        playerPanel.add(goldLabel);
-
-        inventoryBtnPanel = new JPanel();
-        inventoryBtnPanel.setBounds(windowW - 80, windowH - 100, 50, 50);
-        inventoryBtnPanel.setBackground(textBackground);
-        inventoryBtnPanel.setLayout(new GridLayout(1, 1));
-        container.add(inventoryBtnPanel);
-
-        inventory = new JButton();
-        inventory.setBackground(textBackground);
-        inventory.setFocusPainted(false);
-        try {
-            Image inventoryIcon = ImageIO.read(getClass().getResource("/resources/InventoryIcon.png"))
-                    .getScaledInstance(45,45, Image.SCALE_DEFAULT);
-            inventory.setIcon(new ImageIcon(inventoryIcon));
-        } catch (Exception ex) {
-            System.out.println("Icon Failed");
-        }
-        inventoryBtnPanel.add(inventory);
+        this.titleNamePanel = new JPanel();
+        this.titleNamePanel.setBounds(100, 100, 600, 150);
+        //this.titleNamePanel.setBackground(textBackground);
+        this.titleNamePanel.setBackground(Color.black);
 
 
-        this.mainText = "This is the main text";
-        //this.commands = setUpButtons(nButtons);
+        this.titleNameLabel = new JLabel("EPIC RPG");
+        //this.titleNameLabel.setText("working");
+        this.titleNameLabel.setFont(titleFont);
+        this.titleNameLabel.setForeground(Color.white);
+        this.titleNamePanel.add(titleNameLabel);
+        titleContainer.add(titleNamePanel);
 
-        //todo el setup de la gui y todo lo que no sea el main text o los comandos
-        // JFrame y toda la mamada
-        // set de ubicacion de los comandos con grid layout
-        // barra de vida, dinero,ataque, localizacion
-        // boton de inventario
+        this.titleButtonPanel = new JPanel();
+        this.titleButtonPanel.setBounds(300,400,200,150);
+        this.titleButtonPanel.setBackground(Color.black);
+        this.titleButtonPanel.setLayout(new GridLayout(2, 1));
+        titleContainer.add(titleButtonPanel);
 
+        this.startButton = new JButton("START");
+        this.startButton.setBackground(textBackground);
+        this.startButton.setForeground(Color.white);
+        this.startButton.setFont(normalFont);
+        this.startButton.setFocusPainted(false);
+        this.startButton.addActionListener(titleScreen);
+        this.startButton.setActionCommand("Start");
+        titleButtonPanel.add(startButton);
+
+        this.continueButton = new JButton("CONTINUE");
+        this.continueButton.setBackground(textBackground);
+        this.continueButton.setForeground(Color.white);
+        this.continueButton.setFont(normalFont);
+        this.continueButton.setFocusPainted(false);
+        this.continueButton.addActionListener(titleScreen);
+        this.continueButton.setActionCommand("Continue");
+        titleButtonPanel.add(continueButton);
     }
 
     public void setUpButtons(Location place) {
@@ -132,10 +114,10 @@ public class GUI {
             btn.setForeground(Color.white);
             btn.setFont(normalFont);
             btn.setFocusPainted(false);
+
             this.actionListener = place;
             btn.addActionListener(actionListener);
             btn.setActionCommand("c"+(i+1));
-            //hacer todo el setup del boon
             this.commands.add(btn);
             this.choiceButtonPanel.add(btn);
         }
@@ -159,20 +141,101 @@ public class GUI {
             this.actionListener = place;
             btn.addActionListener(actionListener);
         }
+        for( ActionListener al : this.inventory.getActionListeners() ) {
+            inventory.removeActionListener( al );
+        }
+        inventory.addActionListener(actionListener);
     }
 
     public void setHealth(int health) {
         this.health = health;
-        this.hpLabel.setText("HP:  " + health + "             ");
+        this.hpLabel.setText("HP:  " + health + "           ");
     }
 
     public void setAttack(int attack) {
         this.attack = attack;
-        this.attackLabel.setText("Attack:  " + attack + "             ");
+        this.attackLabel.setText("Attack:  " + attack + "           ");
     }
 
     public void setGold(int gold) {
         this.gold = gold;
         this.goldLabel.setText("Gold:  " + gold);
     }
+
+    public void setGameScreen(){
+        //Game Screen Set up
+        Rectangle mainTextRectangle = new Rectangle(100, 100, windowW - 200, windowH - 400);
+        this.textBackground = Color.BLACK;//new Color(255,255,255, 50);
+
+        this.mainTextPanel = new JPanel();
+        this.mainTextPanel.setBounds(mainTextRectangle);
+        this.mainTextPanel.setBackground(textBackground);
+        this.gameContainer.add(mainTextPanel);
+
+        this.mainTextArea = new JTextArea("This is a test");
+        this.mainTextArea.setBounds(mainTextRectangle);
+        this.mainTextArea.setBackground(textBackground);
+        this.mainTextArea.setForeground(Color.white);
+        this.mainTextArea.setFont(normalFont);
+        this.mainTextArea.setLineWrap(true);
+        this.mainTextArea.setWrapStyleWord(true);
+        this.mainTextPanel.add(mainTextArea);
+
+        this.choiceButtonPanel = new JPanel();
+        this.choiceButtonPanel.setBounds(250, 100 + windowH - 340, 300, 150);
+        this.choiceButtonPanel.setBackground(Color.black);
+        this.choiceButtonPanel.setLayout(new GridLayout(nButtons, 1));
+        this.gameContainer.add(choiceButtonPanel);
+
+
+
+        this.playerPanel = new JPanel();
+        this.playerPanel.setBounds(50, 15, 700, 50);
+        this.playerPanel.setBackground(Color.black);
+        //playerPanel.setLayout(new GridLayout(1,5));
+        this.gameContainer.add(playerPanel);
+
+        this.hpLabel = new JLabel("HP: 100             ");
+        this.hpLabel.setFont(normalFont);
+        this.hpLabel.setForeground(Color.white);
+        this.playerPanel.add(hpLabel);
+//        hpLabelNum = new JLabel();
+//        hpLabelNum.setFont(normalFont);
+//        hpLabelNum.setForeground(Color.white);
+//        playerPanel.add(hpLabelNum);
+
+        this.attackLabel = new JLabel("Attack: 999             ");
+        this.attackLabel.setFont(normalFont);
+        this.attackLabel.setForeground(Color.white);
+        this.playerPanel.add(attackLabel);
+//        attackLabelNum = new JLabel();
+//        playerPanel.add(attackLabelNum);
+
+        this.goldLabel = new JLabel("Gold: 9999");
+        this.goldLabel.setFont(normalFont);
+        this.goldLabel.setForeground(Color.white);
+        this.playerPanel.add(goldLabel);
+
+        this.inventoryBtnPanel = new JPanel();
+        this.inventoryBtnPanel.setBounds(windowW - 80, windowH - 100, 50, 50);
+        this.inventoryBtnPanel.setBackground(textBackground);
+        this.inventoryBtnPanel.setLayout(new GridLayout(1, 1));
+        this.gameContainer.add(inventoryBtnPanel);
+
+        this.inventory = new JButton();
+        this.inventory.setBackground(textBackground);
+        this.inventory.setFocusPainted(false);
+        this.inventory.addActionListener(actionListener);
+        this.inventory.setActionCommand("Save");
+        try {
+            Image inventoryIcon = ImageIO.read(getClass().getResource("/resources/InventoryIcon.png"))
+                    .getScaledInstance(45,45, Image.SCALE_DEFAULT);
+            // Source: iconbros.com
+            this.inventory.setIcon(new ImageIcon(inventoryIcon));
+        } catch (Exception ex) {
+            System.out.println("Icon Failed");
+        }
+        this.inventoryBtnPanel.add(inventory);
+    }
+
 }

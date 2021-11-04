@@ -13,7 +13,7 @@ public abstract class Location implements ActionListener {
     public Location(String[] options, Game rpg) {
         this.options = options;
         this.rpg = rpg;
-        mainString = "wtf";
+        mainString = "testing";
     }
 
     public void actionPerformed(ActionEvent event){
@@ -22,13 +22,13 @@ public abstract class Location implements ActionListener {
             case "c1":command1();break;
             case "c2":command2();break;
             case "c3":command3();break;
+            case "Save":rpg.savePlayerData();break;
         }
     }
 
     abstract void command1();
     abstract void command2();
     abstract void command3();
-
     public String[] getOptions() {
         return options;
     }
