@@ -24,6 +24,8 @@ public class Game {
     GUI gui;
     public Player player;
     String fileName = "src/SavedGame.txt";
+    public HashMap<Enemy, Boolean> enemies;
+
     //ChoiceHandler choiceHandler;
     public Game() {
         titleScreen = new TitleScreen(new String[]{"Start", "Continue"}, this);
@@ -104,5 +106,9 @@ public class Game {
         }catch (Exception e){
             System.out.println("Unable to save");
         }
+    }
+
+    public void setEnemies(HashMap<Enemy, Boolean> enemies) {
+        this.enemies = enemies;
     }
 }

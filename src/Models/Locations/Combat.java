@@ -21,6 +21,7 @@ public class Combat extends Location {
         this.givesHP = givesHP;
         this.gameStateChanger = gameStateChanger;
         this.specialReward = specialReward;
+        this.mainString = enemy.getDisplayText();
     }
 
     @Override

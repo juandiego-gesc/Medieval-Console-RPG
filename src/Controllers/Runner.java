@@ -14,7 +14,8 @@ public class Runner {
     public static void main(String[] args) {
         Game rpg = new Game();
         rpg.setLocations(setUpPlaces(rpg));
-        rpg.setItems(setUpItems());
+        rpg.setItems(setUpItems(rpg));
+        rpg.setEnemies(setUpEnemies(rpg));
         rpg.gui.setUpButtons(rpg.locations.get("Ciudad"));
         rpg.setActualPlace("Ciudad");
     }
@@ -44,8 +45,8 @@ public class Runner {
 
         temp.put("MenuTienda", new ShopMenu(new String[]{"Comprar", "Vender", "Volver"},rpg));
 
-        temp.put("Mazmorra1",new Dungeon(new String[]{"Atacar", "Avanzar", "Volver"}, rpg));
-        temp.put("Mazmorra2",new Dungeon(new String[]{"Atacar", "Avanzar", "Volver"}, rpg));
+        temp.put("Mazmorra",new Dungeon(new String[]{"Atacar", "Avanzar", "Volver"}, rpg,
+                "Has entrado en las catacumbas, abran muchos enemigos por aquí... Ten cuidado", enemies[3], enemies[4]));
 
         temp.put("Bosque",new Forest(new String[]{"Atacar", "Avanzar", "Volver"}, rpg));
 

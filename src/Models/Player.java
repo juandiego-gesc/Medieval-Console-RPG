@@ -16,7 +16,6 @@ public class Player {
 
     public Player(GUI gui) {
         this.gui = gui;
-        inventory = new HashMap<>();
         // TODO
         //  add initial inventory Items
         this.hpCap = 100;
@@ -60,4 +59,9 @@ public class Player {
     public int getGameState() {
         return gameState;
     }
+
+    public void setInventory(HashMap<Item, Integer> inventory){
+        this.inventory = inventory;
+    }
+
 }
