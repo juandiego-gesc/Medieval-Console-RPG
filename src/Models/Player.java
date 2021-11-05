@@ -25,7 +25,12 @@ public class Player {
         this.gameState = 0;
     }
 
-    public void setHp(int hp) {
+    public void setHp(int hp){
+        this.hp = hp;
+        gui.setHealth(this.hp);
+    }
+
+    public void heal(int hp) {
         if (this.hp + hp < hpCap) {
             this.hp += hp;
         } else {

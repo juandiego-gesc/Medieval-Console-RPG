@@ -11,16 +11,14 @@ public class Dungeon extends Location{
     public Dungeon(String[] options,  Game rpg, String mainText, Enemy en1, Enemy en2) {
         super(options, rpg);
         this.lvl = 1;
-
         this.mainString = "Has entrado a las catacumbas. \n Hay muchos enemigos aquí, ten cuidado.";
         this.enemy01 = en1;
         this.enemy02 = en2;
-
     }
 
     @Override
     void command1() {
-        if (lvl == 1 && enemy02.isAlive){
+        if (lvl == 1 && enemy01.isAlive){
             rpg.setActualPlace("Combate4");
         } else if(enemy02.isAlive) {
             rpg.setActualPlace("Combate5");

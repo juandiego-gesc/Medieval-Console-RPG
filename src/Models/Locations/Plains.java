@@ -31,9 +31,9 @@ public class Plains extends Location{
 
     @Override
     void command2() { //Avanzar
-        if (rpg.player.gameState == 0){
+        if (rpg.player.gameState == 0 && !enemy01.isAlive){
             rpg.setActualPlace("Bosque");
-        } else {
+        } else if (!enemy02.isAlive){
             rpg.setActualPlace("Mazmorra");
         }
     }

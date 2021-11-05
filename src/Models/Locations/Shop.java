@@ -11,7 +11,10 @@ public class Shop extends Location{
         ShopMenu temp = (ShopMenu) rpg.locations.get("MenuTienda");
         temp.venta = false;
         temp.options = new String[]{"Poción LVL1", "Poción LVL2", "Volver"};
-        temp.mainString = "";//Aqui tiene que ir el cuadro ese de tienda, eso no lo hago yo
+        temp.mainString = "Has entrado a la tienda. ¿Qué deseas hacer?\n" +
+                "Item                             Precio\n" +
+                "Poción lvl 1                     20\n" +
+                "Poción lvl 2                     35";//Aqui tiene que ir el cuadro ese de tienda, eso no lo hago yo
         rpg.setActualPlace("MenuTienda");
     }
 

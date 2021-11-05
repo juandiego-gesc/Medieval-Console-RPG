@@ -34,8 +34,7 @@ public class Combat extends Location {
         enemyHP -= rpg.player.getAttack();
 
         //De enemigo a player
-        int actualHP = rpg.player.getHp() - rand.nextInt(enemy.getEnemyAttackRange()[1] - enemy.getEnemyAttackRange()[0] + 1 + enemy.getEnemyAttackRange()[0]);
-        rpg.player.setHp(actualHP);
+        rpg.player.setHp(rpg.player.getHp() -(rand.nextInt(((enemy.getEnemyAttackRange()[1] - enemy.getEnemyAttackRange()[0]) + 1) + enemy.getEnemyAttackRange()[0])));
 
         if (rpg.player.getHp() <= 0) {
             playerDeath();
@@ -51,18 +50,21 @@ public class Combat extends Location {
         rpg.setActualPlace("Ciudad");
 
         //Sistema de respawneo
-        for (Enemy enemy:rpg.enemies.values()
-             ) {
+        for (Enemy enemy:rpg.enemies.values()) {
             enemy.isAlive = true;
         }
     }
 
     @Override
     void command3() { //Curarse
-        if (rpg.player.inventory.get(rpg.items.get(4)) > 0) {
-            rpg.player.setHp(rpg.player.hp + 60);
-        } else if (rpg.player.inventory.get(rpg.items.get(3)) > 0) {
-            rpg.player.setHp(rpg.player.hp + 30);
+        Item potionLvl1 = rpg.items.get(1);
+        Item potionLvl2 = rpg.items.get(2);
+        if (rpg.player.inventory.get(potionLvl2) > 0) {
+            rpg.player.heal(60);
+            rpg.player.inventory.put(potionLvl2, rpg.player.inventory.get(potionLvl2) - 1);
+        } else if (rpg.player.inventory.get(potionLvl1) > 0) {
+            rpg.player.heal(30);
+            rpg.player.inventory.put(potionLvl1, rpg.player.inventory.get(potionLvl1) - 1);
         }
     }
 
@@ -70,6 +72,7 @@ public class Combat extends Location {
         rpg.locations.get("Ciudad").mainString = "¿Qué ha pasado? Me siento adolorido...";
         rpg.setActualPlace("Ciudad");
         rpg.player.setGold(rpg.player.gold - 50);
+        rpg.player.setHp(25);
 
 //        Si queremos ser mala gente podemos respawnear enemigos.
         for (Enemy enemy:rpg.enemies.values()) {
@@ -97,6 +100,7 @@ public class Combat extends Location {
 
         enemy.isAlive = false;
 
+        happeningIn.mainString = "¡Felicitaciones! Has vencido.";
         rpg.setActualPlace(happeningIn);
     }
 

@@ -9,6 +9,7 @@ public class QuestBoard extends Location{
     @Override
     void command1() { //Goblin
         rpg.player.gameState = 0;
+        rpg.locations.get("Llanuras").mainString = "Has entrado en las llanuras. \nLas manadas de lobos cazan aquí, ten cuidado.";
         rpg.setActualPlace("Llanuras");
 //        System.out.println("Estas en la mision del goblin"); //Esto es una prueba
     }
@@ -16,6 +17,7 @@ public class QuestBoard extends Location{
     @Override
     void command2() { //Dragon
         rpg.player.gameState = 1;
+        rpg.locations.get("Llanuras").mainString = "Has entrado en las llanuras. \nLas manadas de lobos cazan aquí, ten cuidado.";
         rpg.setActualPlace("Llanuras");
 //        System.out.println("Estas en la mision del dragon"); //Esto es una prueba
     }

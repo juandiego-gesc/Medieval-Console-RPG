@@ -36,6 +36,7 @@ public class Runner {
         startingInv.put(temp.get(1), 1);
 
         rpg.player.setInventory(startingInv);
+
         return temp;
     }
     
@@ -58,12 +59,13 @@ public class Runner {
 
         temp.put("MenuTienda", new ShopMenu(new String[]{"Comprar", "Vender", "Volver"},rpg));
 
-        temp.put("Mazmorra",new Dungeon(new String[]{"Atacar", "Avanzar", "Volver"}, rpg,
-                "Has entrado en las catacumbas, abran muchos enemigos por aquí... Ten cuidado", rpg.enemies.get(4), rpg.enemies.get(5)));
+        temp.put("Mazmorra",new Dungeon(new String[]{"Atacar", "Avanzar","Volver"},rpg,rpg.enemies.get(4),rpg.enemies.get(5)));
 
         temp.put("Bosque",new Forest(new String[]{"Atacar", "Avanzar", "Volver"}, rpg, rpg.enemies.get(2)));
 
         temp.put("Llanuras",new Plains(new String[]{"Atacar", "Avanzar", "Volver"}, rpg, rpg.enemies.get(1), rpg.enemies.get(3)));
+
+        temp.put("Herrero", new Blacksmith(new String[]{"Mejorar arma","Mejorar armadura", "Volver"},rpg));
 
         //En todos estos toca decir que enemigo hay, donde esta ocurriendo la pelea, si da vida extra, si cambia el estado del juego o si da recompensa e
 
