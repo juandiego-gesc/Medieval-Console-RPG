@@ -1,5 +1,6 @@
 package Controllers;
 
+import Models.Enemy;
 import Models.Items.HealingItem;
 import Models.Items.Item;
 import Models.Items.Loot;
@@ -47,11 +48,12 @@ public class Runner {
         temp.put("Llanuras",new Plains(new String[]{"Atacar", "Avanzar", "Volver"}, rpg));
 
         //En todos estos toca decir que enemigo hay, donde esta ocurriendo la pelea, si da vida extra, si cambia el estado del juego o si da recompensa especial.
-//        temp.put("Combate1",new Combat(new String[]{"Atacar", "Avanzar", "Volver"}, rpg)); //Lobo, Llanura, no, no, no
-//        temp.put("Combate2",new Combat(new String[]{"Atacar", "Avanzar", "Volver"}, rpg)); //Goblin, Forest, si, si, si
-//        temp.put("Combate3",new Combat(new String[]{"Atacar", "Avanzar", "Volver"}, rpg)); //Lobo, Llanura, no, no, no
-//        temp.put("Combate4",new Combat(new String[]{"Atacar", "Avanzar", "Volver"}, rpg)); //Esqueleto, Dungeon, si, no, no
-//        temp.put("Combate5",new Combat(new String[]{"Atacar", "Avanzar", "Volver"}, rpg)); //Dragon, Dungeon, no, si, no
+        temp.put("Combate1",new Combat(new String[]{"Atacar", "Avanzar", "Volver"}, rpg,new Enemy(5,2,"mamon",),temp.get("Llanuras"),false,false,false)); //Lobo, Llanura, no, no, no
+        temp.put("Combate2",new Combat(new String[]{"Atacar", "Avanzar", "Volver"}, rpg,new Enemy(5,2,"mamon",),temp.get("Bosque"),true,true,true)); //Goblin, Forest, si, si, si
+        temp.put("Combate3",new Combat(new String[]{"Atacar", "Avanzar", "Volver"}, rpg,new Enemy(5,2,"mamon",),temp.get("Llanuras"),false,false,false)); //Lobo, Llanura, no, no, no
+        temp.put("Combate4",new Combat(new String[]{"Atacar", "Avanzar", "Volver"}, rpg,new Enemy(5,2,"mamon",),temp.get("Mazmorra1"),true,false,false)); //Esqueleto, Dungeon, si, no, no
+        temp.put("Combate5",new Combat(new String[]{"Atacar", "Avanzar", "Volver"}, rpg,new Enemy(5,2,"mamon",),temp.get("Mazmorra2"),false,true,false)); //Dragon, Dungeon, no, si, no
+
 
         temp.put("Tablero",new QuestBoard(new String[]{"Atacar", "Avanzar", "Volver"}, rpg));
 
