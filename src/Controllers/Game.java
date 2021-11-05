@@ -88,10 +88,12 @@ public class Game {
             //Files.newBufferedWriter(file, StandardOpenOption.TRUNCATE_EXISTING);
             BufferedWriter bw = new BufferedWriter(new FileWriter(fileName));
 
+            bw.write("" + player.inventory.size());
+            bw.newLine();
             for(Item key : player.inventory.keySet()){
-                bw.write(key.getId());
+                bw.write("" + key.getId());
                 bw.newLine();
-                bw.write(player.inventory.get(key));
+                bw.write("" + player.inventory.get(key));
                 bw.newLine();
             }
             bw.write("" + player.hp);bw.newLine();
