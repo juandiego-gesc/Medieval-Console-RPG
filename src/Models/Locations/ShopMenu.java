@@ -27,6 +27,7 @@ public class ShopMenu extends Location {
                 int actualGold = rpg.player.getGold() + prod1.getSellingPrice() * rpg.player.inventory.get(forSale[0]);
                 rpg.player.setGold(actualGold);
                 rpg.player.inventory.put(forSale[0], 0);
+                updateText();
             }
         } else {
             HealingItem prod1 = (HealingItem) products[0];
@@ -46,6 +47,7 @@ public class ShopMenu extends Location {
                 int actualGold = rpg.player.getGold() + prod2.getSellingPrice() * rpg.player.inventory.get(forSale[1]);
                 rpg.player.setGold(actualGold);
                 rpg.player.inventory.put(forSale[1], 0);
+                updateText();
             }
         } else {
             HealingItem prod2 = (HealingItem) products[1];
@@ -53,8 +55,26 @@ public class ShopMenu extends Location {
                 int actualGold = rpg.player.getGold() - prod2.getBuyingPrice();
                 rpg.player.setGold(actualGold);
                 rpg.player.inventory.put(products[1], rpg.player.inventory.getOrDefault(products[1], 0) + 1);
+                updateText();
             }
         }
+    }
+
+    public void updateText(){
+        if (venta){
+            mainString = "Miras tu inventario. ¿Qué deseas vender?\n" +
+                    "Item                    Inv.Actual                  Precio\n" +
+                    "Piel de lobo               "+rpg.player.inventory.getOrDefault(rpg.items.get(3),0)+"                            40\n" +
+                    "Carne                        "+rpg.player.inventory.getOrDefault(rpg.items.get(4),0)+"                            20";
+
+
+        }else{
+            mainString = "Miras las mercancias actuales. ¿Te interesa algo?\n" +
+                    "Item                    Inv.Actual                  Precio\n" +
+                    "Poción lvl 1               "+rpg.player.inventory.getOrDefault(rpg.items.get(1),0)+"                            20\n" +
+                    "Poción lvl 2               "+rpg.player.inventory.getOrDefault(rpg.items.get(2),0)+"                            35";
+        }
+        rpg.gui.setMainText(this);
     }
 
     @Override

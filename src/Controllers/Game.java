@@ -21,7 +21,7 @@ public class Game {
     Location titleScreen;
     public HashMap<Integer, Item> items;
     Location actualPlace;
-    GUI gui;
+    public GUI gui;
     public Player player;
     String fileName = "src/SavedGame.txt";
     public HashMap<Integer, Enemy> enemies;
