@@ -2,7 +2,7 @@ package Models.Items;
 
 import java.awt.event.ActionListener;
 
-public abstract class Item implements ActionListener {
+public abstract class Item {
     private int id;
     private String name;
 

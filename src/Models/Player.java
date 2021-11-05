@@ -44,4 +44,20 @@ public class Player {
         this.gold = gold;
         gui.setGold(gold);
     }
+
+    public int getHp() {
+        return hp;
+    }
+
+    public int getAttack() {
+        return attack;
+    }
+
+    public int getGold() {
+        return gold;
+    }
+
+    public int getGameState() {
+        return gameState;
+    }
 }

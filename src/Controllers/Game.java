@@ -19,10 +19,10 @@ import java.util.*;
 public class Game {
     HashMap<String, Location> locations;
     Location titleScreen;
-    HashMap<Integer, Item> items;
+    public HashMap<Integer, Item> items;
     Location actualPlace;
     GUI gui;
-    Player player;
+    public Player player;
     String fileName = "src/SavedGame.txt";
     //ChoiceHandler choiceHandler;
     public Game() {

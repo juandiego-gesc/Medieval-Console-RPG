@@ -2,6 +2,7 @@ package Models.Locations;
 
 import Controllers.Game;
 import Models.Enemy;
+import Models.Items.Item;
 
 public class Combat extends Location {
 
@@ -48,18 +49,20 @@ public class Combat extends Location {
         Plains temp = (Plains) rpg.locations.get("Llanuras");
         temp.enemies.replaceAll((e, v) -> true);
         Forest temp1 = (Forest) rpg.locations.get("Bosque");
-        temp1.enemies.replaceAll((e, v) -> true);;
+        temp1.enemies.replaceAll((e, v) -> true);
+        ;
         Forest temp2 = (Forest) rpg.locations.get("Mazmorra1");
-        temp2.enemies.replaceAll((e, v) -> true);;
+        temp2.enemies.replaceAll((e, v) -> true);
+        ;
         Forest temp3 = (Forest) rpg.locations.get("Mazmorra2");
         temp3.enemies.replaceAll((e, v) -> true);
     }
 
     @Override
     void command3() { //Curarse
-        if (rpg.player.inventory.get(rpg.items.get(4)) > 0){
+        if (rpg.player.inventory.get(rpg.items.get(4)) > 0) {
             rpg.player.setHp(rpg.player.hp + 60);
-        } else if (rpg.player.inventory.get(rpg.items.get(3)) > 0){
+        } else if (rpg.player.inventory.get(rpg.items.get(3)) > 0) {
             rpg.player.setHp(rpg.player.hp + 30);
         } else {
             rpg.setActualPlace("");
@@ -75,35 +78,36 @@ public class Combat extends Location {
         Plains temp = (Plains) rpg.locations.get("Llanuras");
         temp.enemies.replaceAll((e, v) -> true);
         Forest temp1 = (Forest) rpg.locations.get("Bosque");
-        temp1.enemies.replaceAll((e, v) -> true);;
+        temp1.enemies.replaceAll((e, v) -> true);
+        ;
         Forest temp2 = (Forest) rpg.locations.get("Mazmorra1");
-        temp2.enemies.replaceAll((e, v) -> true);;
+        temp2.enemies.replaceAll((e, v) -> true);
+        ;
         Forest temp3 = (Forest) rpg.locations.get("Mazmorra2");
         temp3.enemies.replaceAll((e, v) -> true);
     }
-    public void rewardPlayer(){
 
     private void rewardPlayer() {
         rpg.player.setGold(rpg.player.gold + 50);
-        if (givesHP){
+        if (givesHP) {
             rpg.player.hpCap += 50;
         }
         rpg.player.setHp(rpg.player.hpCap);
         for (Item item : (Item) enemy.getRewards()) {
-            rpg.player.inventory.put(item, (rpg.player.inventory.get(item))+1);
+            rpg.player.inventory.put(item, (rpg.player.inventory.get(item)) + 1);
         }
-        if (gameStateChanger){
+        if (gameStateChanger) {
             rpg.player.gameState += 1;
         }
-        if (specialReward){
+        if (specialReward) {
             rpg.player.setAttack(20);
-            rpg.player.inventory.put(rpg.items.get(6),1);
+            rpg.player.inventory.put(rpg.items.get(6), 1);
         }
         rpg.setActualPlace(happeningIn);
     }
-}
-    }
-    public void playerDeath(){
 
-    }
+//    public void playerDeath() {
+//
+//    }
+}
 

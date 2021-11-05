@@ -1,5 +1,7 @@
 package Models.Items;
 
+import java.awt.event.ActionEvent;
+
 public class HealingItem extends Item{
     int buyingPrice;
 
@@ -10,4 +12,5 @@ public class HealingItem extends Item{
     public int getBuyingPrice(){
         return buyingPrice;
     }
+
 }
