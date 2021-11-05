@@ -4,7 +4,10 @@ import Controllers.Game;
 
 public class Shop extends Location{
 
-    public Shop(String[] options, Game rpg) { super(options, rpg); }
+    public Shop(String[] options, Game rpg) {
+        super(options, rpg);
+        this.mainString = "Bienvenido a la tienda. ¿Qué deseas hacer?";
+    }
 
     @Override
     void command1() { //Comprar
@@ -23,7 +26,11 @@ public class Shop extends Location{
         ShopMenu temp = (ShopMenu) rpg.locations.get("MenuTienda");
         temp.venta = true;
         temp.options = new String[]{"Piel de Lobo", "Carne", "Volver"};
-        temp.mainString = "";//Aqui tiene que ir el cuadro ese de tienda, eso no lo hago yo
+        temp.mainString = "Miras tu inventario. ¿Qué deseas vender?\n" +
+                "Item                    Inv.Actual                  Precio\n" +
+                "Piel de lobo               "+rpg.player.inventory.getOrDefault(rpg.items.get(3),0)+"                            40\n" +
+                "Carne                        "+rpg.player.inventory.getOrDefault(rpg.items.get(4),0)+"                            20";
+
         rpg.setActualPlace("MenuTienda");
     }
 

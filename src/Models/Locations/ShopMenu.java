@@ -34,7 +34,8 @@ public class ShopMenu extends Location {
             if (rpg.player.getGold() >= prod1.getBuyingPrice()) {
                 int actualGold = rpg.player.gold - prod1.getBuyingPrice();
                 rpg.player.setGold(actualGold);
-                rpg.player.inventory.put(prod1, rpg.player.inventory.getOrDefault(products[0], 1));
+                rpg.player.inventory.put(prod1, rpg.player.inventory.getOrDefault(products[0], 0)+1);
+                updateText();
             }
         }
     }
