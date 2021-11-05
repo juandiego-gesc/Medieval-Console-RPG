@@ -75,7 +75,7 @@ public class Runner {
         temp.put("Combate5",new Combat(new String[]{"Atacar", "Huir", "Curarse"}, rpg,enemies[4],temp.get("Mazmorra"),false,true,false)); //Dragon, Dungeon, no, si, no
 
 
-        temp.put("Tablero",new QuestBoard(new String[]{"Atacar", "Avanzar", "Volver"}, rpg));
+        temp.put("Tablero",new QuestBoard(new String[]{"Goblin", "Dragon", "Volver"}, rpg));
 
         return temp;
     }

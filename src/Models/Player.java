@@ -18,9 +18,9 @@ public class Player {
         this.gui = gui;
         // TODO
         //  add initial inventory Items
-        this.hpCap = 100;
-        setHp(100);
-        setAttack(10);
+        this.hpCap = 50;
+        setHp(50);
+        setAttack(25);
         setGold(100);
         this.gameState = 0;
     }

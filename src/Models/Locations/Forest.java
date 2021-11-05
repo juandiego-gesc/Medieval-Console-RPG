@@ -15,13 +15,15 @@ public class Forest extends Location {
 
 
     @Override
-    void command1() {
-
+    void command1() { //Atacar
+        if (rpg.enemies.get(enemy01)) {
+            rpg.setActualPlace("Combate2");
+        }
     }
 
     @Override
-    void command2() {
-
+    void command2() { //Avanzar
+        rpg.setActualPlace("Ciudad");
     }
 
     @Override
