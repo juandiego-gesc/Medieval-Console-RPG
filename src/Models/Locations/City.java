@@ -10,25 +10,20 @@ public class City extends Location{
     }
 
     @Override
-    void command1() {
-        //Models.Locations.Tienda
-        //this.rpg.setActualPlace("tienda");
-        System.out.println("Ir a la tienda");
-        // esto podria modificar una variable en el manager que determine el lugar
-        //de pronto un hashmap
+    void command1() { //Tienda
+//      Esto es una prueba del sistema  System.out.println("Pa la tienda");
+        this.rpg.setActualPlace("Tienda");
     }
 
     @Override
-    void command2() {
-        //Herrero
-        System.out.println("Ir al Herrero");
-        //this.rpg.setActualPlace("Herrero");
+    void command2() { //Herrero
+//      Esto es una prueba del sistema  System.out.println("Pal Herrero");
+        this.rpg.setActualPlace("Herrero");
     }
 
     @Override
-    void command3() {
-        //Ir a Mision
-        System.out.println("Ir a las planicies");
-        this.rpg.setActualPlace("Plains");
+    void command3() { //Tablero
+//      Esto es una prueba del sistema  System.out.println("Pa las plains");
+        this.rpg.setActualPlace("Tablero");
     }
 }

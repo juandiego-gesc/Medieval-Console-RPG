@@ -8,6 +8,7 @@ import java.util.HashMap;
 public class Player {
     public HashMap<Item, Integer> inventory;
     public int hp;
+    public int hpCap;
     public int attack;
     public int gold;
     public int gameState;
@@ -18,26 +19,29 @@ public class Player {
         inventory = new HashMap<>();
         // TODO
         //  add initial inventory Items
+        this.hpCap = 100;
         setHp(100);
         setAttack(10);
         setGold(100);
         this.gameState = 0;
     }
 
-    public Player() {
-        public void setHp(int hp) {
+    public void setHp(int hp) {
+        if (this.hp + hp < hpCap) {
             this.hp = hp;
-            gui.setHealth(hp);
+        } else {
+            this.hp = hpCap;
         }
+        gui.setHealth(hp);
+    }
 
-        public void setAttack(int attack) {
-            this.attack = attack;
-            gui.setAttack(attack);
-        }
+    public void setAttack(int attack) {
+        this.attack = attack;
+        gui.setAttack(attack);
+    }
 
-        public void setGold(int gold) {
-            this.gold = gold;
-            gui.setGold(gold);
-        }
+    public void setGold(int gold) {
+        this.gold = gold;
+        gui.setGold(gold);
     }
 }
