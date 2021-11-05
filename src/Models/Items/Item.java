@@ -1,6 +1,8 @@
 package Models.Items;
 
-public abstract class Item {
+import java.awt.event.ActionListener;
+
+public abstract class Item implements ActionListener {
     private int id;
     private String name;
 

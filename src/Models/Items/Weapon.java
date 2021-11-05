@@ -1,5 +1,7 @@
 package Models.Items;
 
+import Controllers.Game;
+
 public class Weapon extends Item {
     int damage;
 
