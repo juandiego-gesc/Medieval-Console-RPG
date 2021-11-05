@@ -10,13 +10,13 @@ public class Forest extends Location {
     public Forest(String[] options, Game rpg, Enemy en1) {
         super(options, rpg);
         this.enemy01 = en1;
-        System.out.println("Has entrado en el bosque, el hogar de los goblins... \n Ten cuidado");
+        this.mainString = "Has entrado en el bosque, el hogar de los goblins... \n Ten cuidado";
     }
 
 
     @Override
     void command1() { //Atacar
-        if (rpg.enemies.get(enemy01)) {
+        if (enemy01.isAlive) {
             rpg.setActualPlace("Combate2");
         }
     }

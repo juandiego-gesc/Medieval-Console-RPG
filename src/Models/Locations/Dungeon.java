@@ -20,9 +20,9 @@ public class Dungeon extends Location{
 
     @Override
     void command1() {
-        if (lvl == 1){
+        if (lvl == 1 && enemy02.isAlive){
             rpg.setActualPlace("Combate4");
-        } else {
+        } else if(enemy02.isAlive) {
             rpg.setActualPlace("Combate5");
         }
     }

@@ -23,7 +23,7 @@ public class Plains extends Location{
                 rpg.setActualPlace("Combate1");
             }
         } else {
-            if (rpg.enemies.get(enemy02)){
+            if (enemy02.isAlive){
                 rpg.setActualPlace("Combate3");
             }
         }
@@ -34,7 +34,7 @@ public class Plains extends Location{
         if (rpg.player.gameState == 0){
             rpg.setActualPlace("Bosque");
         } else {
-            rpg.setActualPlace("Mazmorra1");
+            rpg.setActualPlace("Mazmorra");
         }
     }
 

@@ -51,7 +51,10 @@ public class Combat extends Location {
         rpg.setActualPlace("Ciudad");
 
         //Sistema de respawneo
-        rpg.enemies.replaceAll((e, v) -> true);
+        for (Enemy enemy:rpg.enemies.values()
+             ) {
+            enemy.isAlive = true;
+        }
     }
 
     @Override
@@ -69,7 +72,9 @@ public class Combat extends Location {
         rpg.player.setGold(rpg.player.gold - 50);
 
 //        Si queremos ser mala gente podemos respawnear enemigos.
-        rpg.enemies.replaceAll((e, v) -> true);
+        for (Enemy enemy:rpg.enemies.values()) {
+            enemy.isAlive = true;
+        }
     }
 
     private void rewardPlayer() {
@@ -90,7 +95,7 @@ public class Combat extends Location {
             rpg.player.inventory.put(rpg.items.get(6), 1);
         }
 
-        rpg.enemies.put(enemy, false);
+        enemy.isAlive = false;
 
         rpg.setActualPlace(happeningIn);
     }

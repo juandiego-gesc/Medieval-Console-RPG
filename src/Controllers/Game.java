@@ -24,7 +24,7 @@ public class Game {
     GUI gui;
     public Player player;
     String fileName = "src/SavedGame.txt";
-    public HashMap<Enemy, Boolean> enemies;
+    public HashMap<Integer, Enemy> enemies;
 
     //ChoiceHandler choiceHandler;
     public Game() {
@@ -106,7 +106,7 @@ public class Game {
         }
     }
 
-    public void setEnemies(HashMap<Enemy, Boolean> enemies) {
+    public void setEnemies(HashMap<Integer, Enemy> enemies) {
         this.enemies = enemies;
     }
 }

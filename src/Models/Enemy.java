@@ -9,12 +9,14 @@ public class Enemy {
     int[] enemyAttackRange = new int[2];
     String displayText;
     Item reward;
+    public Boolean isAlive;
 
     public Enemy(int enemyHp, int[] enemyAttack, String displayText, Item reward) {
         this.enemyHp = enemyHp;
         this.enemyAttackRange = enemyAttack;
         this.displayText = displayText;
         this.reward = reward;
+        this.isAlive = true;
     }
 
     public int getEnemyHp(){

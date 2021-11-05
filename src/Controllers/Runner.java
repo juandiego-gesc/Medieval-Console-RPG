@@ -52,13 +52,6 @@ public class Runner {
     private static HashMap<String, Location> setUpPlaces(Game rpg) {
         HashMap<String,Location> temp = new HashMap<>();
 
-        Enemy[] enemies = new Enemy[5];
-        int i = 0;
-        for(Enemy enemy : rpg.enemies.keySet()){
-            enemies[i] = enemy;
-            i++;
-        }
-
         temp.put("Ciudad",new City(new String[]{"Tienda", "Herrero", "Tablero"}, rpg));
 
         temp.put("Tienda", new Shop(new String[]{"Comprar", "Vender", "Volver"},rpg));
@@ -66,7 +59,7 @@ public class Runner {
         temp.put("MenuTienda", new ShopMenu(new String[]{"Comprar", "Vender", "Volver"},rpg));
 
         temp.put("Mazmorra",new Dungeon(new String[]{"Atacar", "Avanzar", "Volver"}, rpg,
-                "Has entrado en las catacumbas, abran muchos enemigos por aquí... Ten cuidado", enemies[3], enemies[4]));
+                "Has entrado en las catacumbas, abran muchos enemigos por aquí... Ten cuidado", rpg.enemies.get(4), rpg.enemies.get(5)));
 
         temp.put("Bosque",new Forest(new String[]{"Atacar", "Avanzar", "Volver"}, rpg, enemies[0]));
 
