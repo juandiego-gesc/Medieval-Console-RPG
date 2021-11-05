@@ -24,8 +24,8 @@ public class Runner {
 
     private static HashMap<Integer, Item> setUpItems(Game rpg) {
         HashMap<Integer,Item> temp = new HashMap<>();
-        temp.put(1, new HealingItem(1, "pocion LVL 1", 25,20)); //pocion LVL 1
-        temp.put(2, new HealingItem(2, "pocion LVL 2", 50,35)); //pocion LVL 2
+        temp.put(1, new HealingItem(1, "pocion LVL 1", 30,20)); //pocion LVL 1
+        temp.put(2, new HealingItem(2, "pocion LVL 2", 60,35)); //pocion LVL 2
         temp.put(3, new Loot(3, "Piel de lobo", 40)); //Piel de Lobo
         temp.put(4, new Loot(4, "Carne", 20)); //Carne
         temp.put(5, new Weapon(5, "Espada de madera", 25)); //Espada de madera
@@ -41,11 +41,11 @@ public class Runner {
     
     private static HashMap<Integer, Enemy> setUpEnemies(Game rpg){
         HashMap<Integer, Enemy> temp = new HashMap<>();
-        temp.put(1 ,new Enemy(70, new int[]{5, 10},"Te has encontrado con un feroz lobo numero 1",rpg.items.get(3)));//lobo1
-        temp.put(2 ,new Enemy(100, new int[]{5, 15},"Te has encontrado con un goblin \n Parece que esta furioso ¡ten cuidado!",rpg.items.get(4)));//goblin
-        temp.put(3 ,new Enemy(80, new int[]{10, 20},"Te has encontrado con un feroz lobo numero 2",rpg.items.get(3)));//lobo2
-        temp.put(4 ,new Enemy(240, new int[]{15, 25},"Te has encontrado un esqueleto",rpg.items.get(4)));//Esqueleto
-        temp.put(5 ,new Enemy(300, new int[]{20, 30},"Te has encontrado un dragon",rpg.items.get(4)));//Dragon
+        temp.put(1 ,new Enemy(70, new int[]{5, 10},"Te has encontrado con un lobo feroz.\n¿Qué vas a hacer?",rpg.items.get(3)));//lobo1
+        temp.put(2 ,new Enemy(100, new int[]{5, 15},"Te has encontrado con un goblin.\nParece que esta furioso ¡ten cuidado!",rpg.items.get(4)));//goblin
+        temp.put(3 ,new Enemy(80, new int[]{10, 20},"Te has encontrado con un lobo feroz.\n ¿Qué vas a hacer?",rpg.items.get(3)));//lobo2
+        temp.put(4 ,new Enemy(240, new int[]{15, 25},"Te has encontrado un esqueleto\n¿Qué vas a hacer?",rpg.items.get(4)));//Esqueleto
+        temp.put(5 ,new Enemy(300, new int[]{20, 30},"¡Has encontrado al dragón de las mazmorras!\n¡Cuidado que no te queme!",rpg.items.get(4)));//Dragon
         return temp;
     }
 
