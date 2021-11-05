@@ -35,7 +35,7 @@ public class GUI {
         window = new JFrame();
         window.setSize(windowW, windowH);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        window.getContentPane().setBackground(Color.BLACK);
+        window.getContentPane().setBackground(Color.black);
         window.setLayout(null);
         window.setVisible(true);
         window.setResizable(false);

@@ -27,11 +27,11 @@ public class Player {
 
     public void setHp(int hp) {
         if (this.hp + hp < hpCap) {
-            this.hp = hp;
+            this.hp += hp;
         } else {
             this.hp = hpCap;
         }
-        gui.setHealth(hp);
+        gui.setHealth(this.hp);
     }
 
     public void setAttack(int attack) {
