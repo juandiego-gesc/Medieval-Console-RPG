@@ -20,12 +20,12 @@ public class Runner {
 
     private static HashMap<Integer, Item> setUpItems() {
         HashMap<Integer,Item> temp = new HashMap<>();
-        temp.put(1, new HealingItem()); //pocion LVL 1
-        temp.put(2, new HealingItem()); //pocion LVL 2
-        temp.put(3, new Loot()); //Piel de Lobo
-        temp.put(4, new Loot()); //Carne
+        temp.put(1, new HealingItem(1, "pocion LVL 1", 25,20)); //pocion LVL 1
+        temp.put(2, new HealingItem(2, "pocion LVL 2", 50,35)); //pocion LVL 2
+        temp.put(3, new Loot(3, "Piel de lobo", 40)); //Piel de Lobo
+        temp.put(4, new Loot(4, "Carne", 20)); //Carne
         temp.put(5, new Weapon(5, "Espada de madera", 25)); //Espada de madera
-        temp.put(6, new Weapon(6, "Espada de madera", 50)); //Espada de hierro
+        temp.put(6, new Weapon(6, "Espada de hierro", 50)); //Espada de hierro
         // Aca los items van a ser creados con un ID en el hashMap para facilitar el update del jugador
         // los IDs correspondientes a cada item estan en el UML
         return temp;
