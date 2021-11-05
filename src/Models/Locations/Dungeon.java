@@ -8,7 +8,7 @@ public class Dungeon extends Location{
     Enemy enemy01;
     Enemy enemy02;
     int lvl;
-    public Dungeon(String[] options,  Game rpg, String mainText, Enemy en1, Enemy en2) {
+    public Dungeon(String[] options,  Game rpg, Enemy en1, Enemy en2) {
         super(options, rpg);
         this.lvl = 1;
         this.mainString = "Has entrado a las catacumbas. \n Hay muchos enemigos aquí, ten cuidado.";
