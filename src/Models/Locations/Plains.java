@@ -19,7 +19,7 @@ public class Plains extends Location{
     @Override
     void command1() { //Atacar
         if (rpg.player.gameState == 0){
-            if (rpg.enemies.get(enemy01)){
+            if (enemy01.isAlive){
                 rpg.setActualPlace("Combate1");
             }
         } else {

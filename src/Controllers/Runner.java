@@ -61,7 +61,7 @@ public class Runner {
         temp.put("Mazmorra",new Dungeon(new String[]{"Atacar", "Avanzar", "Volver"}, rpg,
                 "Has entrado en las catacumbas, abran muchos enemigos por aquí... Ten cuidado", rpg.enemies.get(4), rpg.enemies.get(5)));
 
-        temp.put("Bosque",new Forest(new String[]{"Atacar", "Avanzar", "Volver"}, rpg, enemies[0]));
+        temp.put("Bosque",new Forest(new String[]{"Atacar", "Avanzar", "Volver"}, rpg, rpg.enemies.get(2)));
 
         temp.put("Llanuras",new Plains(new String[]{"Atacar", "Avanzar", "Volver"}, rpg, rpg.enemies.get(1), rpg.enemies.get(3)));
 
