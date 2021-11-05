@@ -27,8 +27,12 @@ public class Runner {
         temp.put(4, new Loot(4, "Carne", 20)); //Carne
         temp.put(5, new Weapon(5, "Espada de madera", 25)); //Espada de madera
         temp.put(6, new Weapon(6, "Espada de hierro", 50)); //Espada de hierro
-        // Aca los items van a ser creados con un ID en el hashMap para facilitar el update del jugador
-        // los IDs correspondientes a cada item estan en el UML
+
+        HashMap<Item, Integer> startingInv = new HashMap<>();
+        startingInv.put(temp.get(5), 1);
+        startingInv.put(temp.get(1), 1);
+
+        rpg.player.setInventory(startingInv);
         return temp;
     }
 
@@ -47,12 +51,12 @@ public class Runner {
 
         temp.put("Llanuras",new Plains(new String[]{"Atacar", "Avanzar", "Volver"}, rpg));
 
-        //En todos estos toca decir que enemigo hay, donde esta ocurriendo la pelea, si da vida extra, si cambia el estado del juego o si da recompensa especial.
-        temp.put("Combate1",new Combat(new String[]{"Atacar", "Avanzar", "Volver"}, rpg,new Enemy(5,2,"mamon",),temp.get("Llanuras"),false,false,false)); //Lobo, Llanura, no, no, no
-        temp.put("Combate2",new Combat(new String[]{"Atacar", "Avanzar", "Volver"}, rpg,new Enemy(5,2,"mamon",),temp.get("Bosque"),true,true,true)); //Goblin, Forest, si, si, si
-        temp.put("Combate3",new Combat(new String[]{"Atacar", "Avanzar", "Volver"}, rpg,new Enemy(5,2,"mamon",),temp.get("Llanuras"),false,false,false)); //Lobo, Llanura, no, no, no
-        temp.put("Combate4",new Combat(new String[]{"Atacar", "Avanzar", "Volver"}, rpg,new Enemy(5,2,"mamon",),temp.get("Mazmorra1"),true,false,false)); //Esqueleto, Dungeon, si, no, no
-        temp.put("Combate5",new Combat(new String[]{"Atacar", "Avanzar", "Volver"}, rpg,new Enemy(5,2,"mamon",),temp.get("Mazmorra2"),false,true,false)); //Dragon, Dungeon, no, si, no
+        //En todos estos toca decir que enemigo hay, donde esta ocurriendo la pelea, si da vida extra, si cambia el estado del juego o si da recompensa e
+        temp.put("Combate1",new Combat(new String[]{"Atacar", "Huir", "Curarse"}, rpg,enemies[0],temp.get("Llanuras"),false,false,false)); //Lobo, Llanura, no, no, no
+        temp.put("Combate2",new Combat(new String[]{"Atacar", "Huir", "Curarse"}, rpg,enemies[1],temp.get("Bosque"),true,true,true)); //Goblin, Forest, si, si, si
+        temp.put("Combate3",new Combat(new String[]{"Atacar", "Huir", "Curarse"}, rpg,enemies[2],temp.get("Llanuras"),false,false,false)); //Lobo, Llanura, no, no, no
+        temp.put("Combate4",new Combat(new String[]{"Atacar", "Huir", "Curarse"}, rpg,enemies[3],temp.get("Mazmorra"),true,false,false)); //Esqueleto, Dungeon, si, no, no
+        temp.put("Combate5",new Combat(new String[]{"Atacar", "Huir", "Curarse"}, rpg,enemies[4],temp.get("Mazmorra"),false,true,false)); //Dragon, Dungeon, no, si, no
 
 
         temp.put("Tablero",new QuestBoard(new String[]{"Atacar", "Avanzar", "Volver"}, rpg));
