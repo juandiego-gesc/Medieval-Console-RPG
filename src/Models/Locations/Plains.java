@@ -7,24 +7,23 @@ import java.util.HashMap;
 
 public class Plains extends Location{
 
-    HashMap <Enemy, Boolean> enemies = new HashMap<>();
-    Enemy enemy01 = new Enemy();
-    Enemy enemy02 = new Enemy(); //Cuando se defina el constructor de enemy, toca crear dos lobos aqui
-    public Plains(String[] options,  Game rpg) {
+    Enemy enemy01;
+    Enemy enemy02; //Cuando se defina el constructor de enemy, toca crear dos lobos aqui
+    public Plains(String[] options,  Game rpg, Enemy en1, Enemy en2) {
         super(options, rpg);
-        enemies.put(enemy01, true);
-        enemies.put(enemy02, true);
+        this.enemy01 = en1;
+        this.enemy02 = en2;
         mainString = "Has entrado en las llanuras, donde las manadas de lobo les gusta cazar... Ten cuidado";
     }
 
     @Override
     void command1() { //Atacar
         if (rpg.player.gameState == 0){
-            if (enemies.get(enemy01)){
+            if (rpg.enemies.get(enemy01)){
                 rpg.setActualPlace("Combate1");
             }
         } else {
-            if (enemies.get(enemy02)){
+            if (rpg.enemies.get(enemy02)){
                 rpg.setActualPlace("Combate3");
             }
         }

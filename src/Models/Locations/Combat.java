@@ -3,6 +3,9 @@ package Models.Locations;
 import Controllers.Game;
 import Models.Enemy;
 import Models.Items.Item;
+import Models.Items.Weapon;
+
+import java.util.Random;
 
 public class Combat extends Location {
 
@@ -16,7 +19,7 @@ public class Combat extends Location {
     public Combat(String[] options, Game rpg, Enemy enemy, Location location, Boolean givesHP, Boolean gameStateChanger, Boolean specialReward) {
         super(options, rpg);
         this.enemy = enemy;
-        this.enemyHP = enemy.getEnemyHP();
+        this.enemyHP = enemy.getEnemyHp();
         this.happeningIn = location;
         this.givesHP = givesHP;
         this.gameStateChanger = gameStateChanger;
@@ -26,17 +29,18 @@ public class Combat extends Location {
 
     @Override
     void command1() { //Atacar
+        Random rand = new Random();
         //De player a enemigo
-        enemyHP -= rpg.player.attack;
+        enemyHP -= rpg.player.getAttack();
 
         //De enemigo a player
-        int actualHP = rpg.player.getHP() - enemy.getAttack();
+        int actualHP = rpg.player.getHp() - rand.nextInt(enemy.getEnemyAttackRange()[1] - enemy.getEnemyAttackRange()[0] + 1 + enemy.getEnemyAttackRange()[0]);
         rpg.player.setHp(actualHP);
 
-        if (rpg.player.getHP() <= 0) {
+        if (rpg.player.getHp() <= 0) {
             playerDeath();
         }
-        if (rpg.player.getHP() > 0 && enemyHP <= 0) {
+        if (rpg.player.getHp() > 0 && enemyHP <= 0) {
             rewardPlayer();
         }
     }
@@ -47,16 +51,7 @@ public class Combat extends Location {
         rpg.setActualPlace("Ciudad");
 
         //Sistema de respawneo
-        Plains temp = (Plains) rpg.locations.get("Llanuras");
-        temp.enemies.replaceAll((e, v) -> true);
-        Forest temp1 = (Forest) rpg.locations.get("Bosque");
-        temp1.enemies.replaceAll((e, v) -> true);
-        ;
-        Forest temp2 = (Forest) rpg.locations.get("Mazmorra1");
-        temp2.enemies.replaceAll((e, v) -> true);
-        ;
-        Forest temp3 = (Forest) rpg.locations.get("Mazmorra2");
-        temp3.enemies.replaceAll((e, v) -> true);
+        rpg.enemies.replaceAll((e, v) -> true);
     }
 
     @Override
@@ -65,8 +60,6 @@ public class Combat extends Location {
             rpg.player.setHp(rpg.player.hp + 60);
         } else if (rpg.player.inventory.get(rpg.items.get(3)) > 0) {
             rpg.player.setHp(rpg.player.hp + 30);
-        } else {
-            rpg.setActualPlace("");
         }
     }
 
@@ -76,16 +69,7 @@ public class Combat extends Location {
         rpg.player.setGold(rpg.player.gold - 50);
 
 //        Si queremos ser mala gente podemos respawnear enemigos.
-        Plains temp = (Plains) rpg.locations.get("Llanuras");
-        temp.enemies.replaceAll((e, v) -> true);
-        Forest temp1 = (Forest) rpg.locations.get("Bosque");
-        temp1.enemies.replaceAll((e, v) -> true);
-        ;
-        Forest temp2 = (Forest) rpg.locations.get("Mazmorra1");
-        temp2.enemies.replaceAll((e, v) -> true);
-        ;
-        Forest temp3 = (Forest) rpg.locations.get("Mazmorra2");
-        temp3.enemies.replaceAll((e, v) -> true);
+        rpg.enemies.replaceAll((e, v) -> true);
     }
 
     private void rewardPlayer() {
@@ -94,21 +78,22 @@ public class Combat extends Location {
             rpg.player.hpCap += 50;
         }
         rpg.player.setHp(rpg.player.hpCap);
-        for (Item item : (Item) enemy.getRewards()) {
-            rpg.player.inventory.put(item, (rpg.player.inventory.get(item)) + 1);
-        }
+
+        rpg.player.inventory.put(enemy.getReward(), (rpg.player.inventory.getOrDefault(enemy.getReward(),0)) + 1);
+
         if (gameStateChanger) {
             rpg.player.gameState += 1;
         }
         if (specialReward) {
-            rpg.player.setAttack(20);
+            Weapon newSword = (Weapon) rpg.items.get(6);
+            rpg.player.setAttack(newSword.getDamage());
             rpg.player.inventory.put(rpg.items.get(6), 1);
         }
+
+        rpg.enemies.put(enemy, false);
+
         rpg.setActualPlace(happeningIn);
     }
 
-//    public void playerDeath() {
-//
-//    }
 }
 

@@ -1,7 +1,9 @@
 package Models.Locations;
 
 import Controllers.Game;
+import Models.Items.HealingItem;
 import Models.Items.Item;
+import Models.Items.Loot;
 
 public class ShopMenu extends Location {
 
@@ -19,12 +21,16 @@ public class ShopMenu extends Location {
 
     @Override
     void command1() { //Vender/Comprar primer elemento
-        if (venta){
-            int actualGold = rpg.player.getGold() + forSale[0].getSellingPrice() * rpg.player.inventory.get(forSale[0]);
-            rpg.player.setGold(actualGold);
-            rpg.player.inventory.put(forSale[0], 0);
+        if (venta) {
+            if (rpg.player.inventory.get(forSale[0]) > 0) {
+                Loot prod1 = (Loot) forSale[0];
+                int actualGold = rpg.player.getGold() + prod1.getSellingPrice() * rpg.player.inventory.get(forSale[0]);
+                rpg.player.setGold(actualGold);
+                rpg.player.inventory.put(forSale[0], 0);
+            }
         } else {
-            int actualGold = rpg.player.gold - products[0].getBuyingPrice();
+            HealingItem prod1 = (HealingItem) products[0];
+            int actualGold = rpg.player.gold - prod1.getBuyingPrice();
             rpg.player.setGold(actualGold);
             rpg.player.inventory.put(products[0], rpg.player.inventory.getOrDefault(products[0], 1));
         }
@@ -32,12 +38,16 @@ public class ShopMenu extends Location {
 
     @Override
     void command2() { //Vender/Comprar segundo elemento
-        if (venta){
-            int actualGold = rpg.player.getGold() + forSale[1].getSellingPrice() * rpg.player.inventory.get(forSale[1]);
-            rpg.player.setGold(actualGold);
-            rpg.player.inventory.put(forSale[1], 0);
+        if (venta) {
+            if (rpg.player.inventory.get(forSale[1]) > 0) {
+                Loot prod2 = (Loot) forSale[1];
+                int actualGold = rpg.player.getGold() + prod2.getSellingPrice() * rpg.player.inventory.get(forSale[1]);
+                rpg.player.setGold(actualGold);
+                rpg.player.inventory.put(forSale[1], 0);
+            }
         } else {
-            int actualGold = rpg.player.getGold() - products[1].getBuyingPrice();
+            HealingItem prod2 = (HealingItem) products[1];
+            int actualGold = rpg.player.getGold() - prod2.getBuyingPrice();
             rpg.player.setGold(actualGold);
             rpg.player.inventory.put(products[1], rpg.player.inventory.getOrDefault(products[1], 0) + 1);
         }

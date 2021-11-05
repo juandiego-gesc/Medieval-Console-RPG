@@ -28,8 +28,11 @@ public class Dungeon extends Location{
     }
 
     @Override
-    void command2() {
-
+    void command2() { //Avanzar
+        if (lvl == 1){
+            lvl += 1;
+            this.mainString = "Has entrado en lo mas profundo de las catacumbas \n Dicen que aquí vive una criatura monstruosa... \nTen cuidado";
+        }
     }
 
     @Override

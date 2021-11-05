@@ -8,9 +8,9 @@ public class Enemy {
     int enemyHp;
     int[] enemyAttackRange = new int[2];
     String displayText;
-    ArrayList<Item> reward = new ArrayList<>();
+    Item reward;
 
-    public Enemy(int enemyHp, int[] enemyAttack, String displayText, ArrayList<Item> reward) {
+    public Enemy(int enemyHp, int[] enemyAttack, String displayText, Item reward) {
         this.enemyHp = enemyHp;
         this.enemyAttackRange = enemyAttack;
         this.displayText = displayText;
@@ -23,7 +23,7 @@ public class Enemy {
     public int[] getEnemyAttackRange(){
         return enemyAttackRange;
     }
-    public ArrayList getReward(){
+    public Item getReward(){
         return reward;
     }
     public String getDisplayText(){

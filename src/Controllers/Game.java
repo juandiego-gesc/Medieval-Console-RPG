@@ -17,7 +17,7 @@ import java.nio.file.StandardOpenOption;
 import java.util.*;
 
 public class Game {
-    HashMap<String, Location> locations;
+    public HashMap<String, Location> locations;
     Location titleScreen;
     public HashMap<Integer, Item> items;
     Location actualPlace;

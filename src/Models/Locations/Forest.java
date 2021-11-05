@@ -1,15 +1,16 @@
 package Models.Locations;
 
 import Controllers.Game;
-
-import java.util.Arrays;
+import Models.Enemy;
 
 public class Forest extends Location {
 
-    public Forest(String[] options, Game rpg) {
-        super(options, rpg);
+    Enemy enemy01;
 
-        System.out.println("Has entrado en el bosque, el hogar de los goblins... Ten cuidado");
+    public Forest(String[] options, Game rpg, Enemy en1) {
+        super(options, rpg);
+        this.enemy01 = en1;
+        System.out.println("Has entrado en el bosque, el hogar de los goblins... \n Ten cuidado");
     }
 
 
@@ -24,7 +25,7 @@ public class Forest extends Location {
     }
 
     @Override
-    void command3() {
-
+    void command3() { //Volver
+        rpg.setActualPlace("Ciudad");
     }
 }
