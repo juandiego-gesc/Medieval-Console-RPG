@@ -15,9 +15,9 @@ import java.util.Set;
 public class Runner {
     public static void main(String[] args) {
         Game rpg = new Game();
-        rpg.setLocations(setUpPlaces(rpg));
         rpg.setItems(setUpItems(rpg));
         rpg.setEnemies(setUpEnemies(rpg));
+        rpg.setLocations(setUpPlaces(rpg));
         rpg.gui.setUpButtons(rpg.locations.get("Ciudad"));
         rpg.setActualPlace("Ciudad");
     }
@@ -51,8 +51,13 @@ public class Runner {
 
     private static HashMap<String, Location> setUpPlaces(Game rpg) {
         HashMap<String,Location> temp = new HashMap<>();
-        Set<Enemy> enemies1 = rpg.enemies.keySet();
-        Enemy[] enemies = enemies1.toArray(new Enemy[enemies1.size()]);
+
+        Enemy[] enemies = new Enemy[5];
+        int i = 0;
+        for(Enemy enemy : rpg.enemies.keySet()){
+            enemies[i] = enemy;
+            i++;
+        }
 
         temp.put("Ciudad",new City(new String[]{"Tienda", "Herrero", "Tablero"}, rpg));
 
@@ -68,6 +73,7 @@ public class Runner {
         temp.put("Llanuras",new Plains(new String[]{"Atacar", "Avanzar", "Volver"}, rpg, enemies[0], enemies[2]));
 
         //En todos estos toca decir que enemigo hay, donde esta ocurriendo la pelea, si da vida extra, si cambia el estado del juego o si da recompensa e
+
         temp.put("Combate1",new Combat(new String[]{"Atacar", "Huir", "Curarse"}, rpg,enemies[0],temp.get("Llanuras"),false,false,false)); //Lobo, Llanura, no, no, no
         temp.put("Combate2",new Combat(new String[]{"Atacar", "Huir", "Curarse"}, rpg,enemies[1],temp.get("Bosque"),true,true,true)); //Goblin, Forest, si, si, si
         temp.put("Combate3",new Combat(new String[]{"Atacar", "Huir", "Curarse"}, rpg,enemies[2],temp.get("Llanuras"),false,false,false)); //Lobo, Llanura, no, no, no
