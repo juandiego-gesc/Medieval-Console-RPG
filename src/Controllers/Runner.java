@@ -12,7 +12,6 @@ public class Runner {
         rpg.setItems(setUpItems());
         rpg.gui.setUpButtons(rpg.locations.get("Ciudad"));
         rpg.setActualPlace("Ciudad");
-
     }
 
     private static HashMap<Integer, Item> setUpItems() {
@@ -28,13 +27,24 @@ public class Runner {
 
         temp.put("Tienda", new Shop(new String[]{"Comprar", "Vender", "Volver"},rpg));
 
-        temp.put("Mazmorra",new Dungeon(new String[]{"Atacar", "Avanzar", "Volver"}, rpg));
+        temp.put("MenuTienda", new ShopMenu(new String[]{"Comprar", "Vender", "Volver"},rpg));
+
+        temp.put("Mazmorra1",new Dungeon(new String[]{"Atacar", "Avanzar", "Volver"}, rpg));
+        temp.put("Mazmorra2",new Dungeon(new String[]{"Atacar", "Avanzar", "Volver"}, rpg));
 
         temp.put("Bosque",new Forest(new String[]{"Atacar", "Avanzar", "Volver"}, rpg));
 
         temp.put("Llanuras",new Plains(new String[]{"Atacar", "Avanzar", "Volver"}, rpg));
 
-        temp.put("Combate",new Combat(new String[]{"Atacar", "Avanzar", "Volver"}, rpg));
+        //En todos estos toca decir que enemigo hay, donde esta ocurriendo la pelea, si da vida extra, si cambia el estado del juego o si da recompensa especial.
+//        temp.put("Combate1",new Combat(new String[]{"Atacar", "Avanzar", "Volver"}, rpg)); //Lobo, Llanura, no, no, no
+//        temp.put("Combate2",new Combat(new String[]{"Atacar", "Avanzar", "Volver"}, rpg)); //Goblin, Forest, si, si, si
+//        temp.put("Combate3",new Combat(new String[]{"Atacar", "Avanzar", "Volver"}, rpg)); //Lobo, Llanura, no, no, no
+//        temp.put("Combate4",new Combat(new String[]{"Atacar", "Avanzar", "Volver"}, rpg)); //Esqueleto, Dungeon, si, no, no
+//        temp.put("Combate5",new Combat(new String[]{"Atacar", "Avanzar", "Volver"}, rpg)); //Dragon, Dungeon, no, si, no
+
+        temp.put("Tablero",new QuestBoard(new String[]{"Atacar", "Avanzar", "Volver"}, rpg));
+
         return temp;
     }
 
