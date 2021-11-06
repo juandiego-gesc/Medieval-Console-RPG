@@ -46,7 +46,7 @@ public class Combat extends Location {
 
     @Override
     void command2() { //Huir
-        rpg.locations.get("Ciudad").mainString = "¡He escapado por los pelos! Debería \n prepararme mejor antes de volver a intentarlo";
+        rpg.locations.get("Ciudad").mainString = "¡Has escapado por los pelos! Deberías \n prepararte mejor antes de volver a intentarlo.";
         rpg.setActualPlace("Ciudad");
 
         //Sistema de respawneo

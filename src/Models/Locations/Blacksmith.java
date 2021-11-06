@@ -6,7 +6,8 @@ public class Blacksmith extends Location {
 
     public Blacksmith(String[] options, Game rpg) {
         super(options, rpg);
-        this.mainString = "";
+        this.mainString = "Has entrado a la forja.\n" +
+                "¿Qué deseas mejorar?";
     }
 
     @Override
