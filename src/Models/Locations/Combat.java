@@ -59,17 +59,19 @@ public class Combat extends Location {
     void command3() { //Curarse
         Item potionLvl1 = rpg.items.get(1);
         Item potionLvl2 = rpg.items.get(2);
-        if (rpg.player.inventory.get(potionLvl2) > 0) {
+        if (rpg.player.inventory.getOrDefault(potionLvl2, 0) > 0) {
             rpg.player.heal(60);
             rpg.player.inventory.put(potionLvl2, rpg.player.inventory.get(potionLvl2) - 1);
-        } else if (rpg.player.inventory.get(potionLvl1) > 0) {
+        } else if (rpg.player.inventory.getOrDefault(potionLvl1,0) > 0) {
             rpg.player.heal(30);
             rpg.player.inventory.put(potionLvl1, rpg.player.inventory.get(potionLvl1) - 1);
         }
     }
 
     private void playerDeath() {
-        rpg.locations.get("Ciudad").mainString = "¿Qué ha pasado? Me siento adolorido...";
+        rpg.locations.get("Ciudad").mainString = "Te han encontrado desplomado en medio de la " +
+                "nada y te han traido a la ciudad...\n" +
+                "Intenta mejorar tu equipo y conseguir pociones";
         rpg.setActualPlace("Ciudad");
         rpg.player.setGold(rpg.player.gold - 50);
         rpg.player.setHp(25);

@@ -164,7 +164,7 @@ public class GUI {
 
     public void setGameScreen(){
         //Game Screen Set up
-        Rectangle mainTextRectangle = new Rectangle(100, 100, windowW - 200, windowH - 400);
+        Rectangle mainTextRectangle = new Rectangle(100, 90, windowW - 200, windowH - 390);
         this.textBackground = Color.BLACK;//new Color(255,255,255, 50);
 
         this.mainTextPanel = new JPanel();

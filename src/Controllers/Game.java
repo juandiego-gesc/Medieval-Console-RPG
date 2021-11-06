@@ -72,6 +72,7 @@ public class Game {
                 newInv.put(current, amount);
             }
             player.inventory = newInv;
+            player.setHpCap(Integer.parseInt(br.readLine()));
             player.setHp(Integer.parseInt(br.readLine()));
             player.setAttack(Integer.parseInt(br.readLine()));
             player.setGold(Integer.parseInt(br.readLine()));
@@ -96,6 +97,7 @@ public class Game {
                 bw.write("" + player.inventory.get(key));
                 bw.newLine();
             }
+            bw.write("" + player.hpCap);bw.newLine();
             bw.write("" + player.hp);bw.newLine();
             bw.write("" + player.attack);bw.newLine();
             bw.write("" + player.gold);bw.newLine();
