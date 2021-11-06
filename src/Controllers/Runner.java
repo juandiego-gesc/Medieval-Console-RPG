@@ -7,10 +7,7 @@ import Models.Items.Loot;
 import Models.Items.Weapon;
 import Models.Locations.*;
 
-
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Set;
 
 public class Runner {
     public static void main(String[] args) {
@@ -66,8 +63,6 @@ public class Runner {
         temp.put("Llanuras",new Plains(new String[]{"Atacar", "Avanzar", "Volver"}, rpg, rpg.enemies.get(1), rpg.enemies.get(3)));
 
         temp.put("Herrero", new Blacksmith(new String[]{"Mejorar arma","Mejorar armadura", "Volver"},rpg));
-
-        //En todos estos toca decir que enemigo hay, donde esta ocurriendo la pelea, si da vida extra, si cambia el estado del juego o si da recompensa e
 
         temp.put("Combate1",new Combat(new String[]{"Atacar", "Huir", "Curarse"}, rpg,rpg.enemies.get(1),temp.get("Llanuras"),false,false,false)); //Lobo, Llanura, no, no, no
         temp.put("Combate2",new Combat(new String[]{"Atacar", "Huir", "Curarse"}, rpg,rpg.enemies.get(2),temp.get("Bosque"),true,true,true)); //Goblin, Forest, si, si, si

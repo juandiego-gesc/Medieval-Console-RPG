@@ -26,11 +26,10 @@ public class Game {
     String fileName = "src/SavedGame.txt";
     public HashMap<Integer, Enemy> enemies;
 
-    //ChoiceHandler choiceHandler;
     public Game() {
         titleScreen = new TitleScreen(new String[]{"Start", "Continue"}, this);
         this.gui = new GUI(titleScreen);
-        this.player = new Player(gui);// Estos valores se definen con JSON
+        this.player = new Player(gui);
     }
 
 
@@ -53,10 +52,12 @@ public class Game {
         this.items = items;
     }
 
+    public void setEnemies(HashMap<Integer, Enemy> enemies) {
+        this.enemies = enemies;
+    }
+
     public void startGame(){
         gui.visibleScreen(true);
-//        gui.setUpButtons(locations.get("Ciudad"));
-//        setActualPlace("Ciudad");
     }
 
     public void loadPlayerData(){
@@ -110,7 +111,5 @@ public class Game {
         }
     }
 
-    public void setEnemies(HashMap<Integer, Enemy> enemies) {
-        this.enemies = enemies;
-    }
+
 }

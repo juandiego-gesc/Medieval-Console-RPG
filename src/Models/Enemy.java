@@ -2,11 +2,10 @@ package Models;
 
 import Models.Items.Item;
 
-import java.util.ArrayList;
 
 public class Enemy {
     int enemyHp;
-    int[] enemyAttackRange = new int[2];
+    int[] enemyAttackRange;
     String displayText;
     Item reward;
     public Boolean isAlive;

@@ -16,8 +16,6 @@ public class Player {
 
     public Player(GUI gui) {
         this.gui = gui;
-        // TODO
-        //  add initial inventory Items
         this.hpCap = 50;
         setHp(50);
         setAttack(25);
@@ -62,10 +60,6 @@ public class Player {
 
     public int getGold() {
         return gold;
-    }
-
-    public int getGameState() {
-        return gameState;
     }
 
     public void setInventory(HashMap<Item, Integer> inventory){

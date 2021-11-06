@@ -2,7 +2,7 @@ package Models.Items;
 
 import java.awt.event.ActionEvent;
 
-public class HealingItem extends Item{
+public class HealingItem extends Item {
     int buyingPrice;
     int healing;
 
@@ -12,10 +12,7 @@ public class HealingItem extends Item{
         this.buyingPrice = price;
     }
 
-    public int getBuyingPrice(){
+    public int getBuyingPrice() {
         return buyingPrice;
-    }
-    public int getHealing(){
-        return healing;
     }
 }

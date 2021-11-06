@@ -17,19 +17,19 @@ public class GUI {
     JPanel titleNamePanel, titleButtonPanel;
     JPanel mainTextPanel, choiceButtonPanel, playerPanel, inventoryBtnPanel;
     JLabel titleNameLabel;
-    JLabel hpLabel, hpLabelNum, attackLabel, attackLabelNum, goldLabel, goldLabelNum;
+    JLabel hpLabel, attackLabel, goldLabel;
     JTextArea mainTextArea;
     Font normalFont, titleFont;
     Color textBackground;
 
     private String mainText;
     private ArrayList<JButton> commands;
-    private JButton startButton,continueButton, inventory;
+    private JButton startButton,continueButton, saveButton;
     private int health = 100;
     private int attack;
     private int gold;
     private final int nButtons = 3;
-    private ActionListener actionListener; //falta inicializar
+    private ActionListener actionListener;
 
     public GUI(Location titleScreen) {
         window = new JFrame();
@@ -63,18 +63,12 @@ public class GUI {
     }
 
     private void setTitleScreen(Location titleScreen) {
-
-
-
-
         this.titleNamePanel = new JPanel();
         this.titleNamePanel.setBounds(100, 100, 600, 150);
-        //this.titleNamePanel.setBackground(textBackground);
         this.titleNamePanel.setBackground(Color.black);
 
 
         this.titleNameLabel = new JLabel("EPIC RPG");
-        //this.titleNameLabel.setText("working");
         this.titleNameLabel.setFont(titleFont);
         this.titleNameLabel.setForeground(Color.white);
         this.titleNamePanel.add(titleNameLabel);
@@ -106,7 +100,6 @@ public class GUI {
     }
 
     public void setUpButtons(Location place) {
-        //ArrayList<JButton> temp = new ArrayList<>();
         this.commands = new ArrayList<>();
         for(int i = 0; i < nButtons; i++) {
             JButton btn = new JButton("");
@@ -141,10 +134,10 @@ public class GUI {
             this.actionListener = place;
             btn.addActionListener(actionListener);
         }
-        for( ActionListener al : this.inventory.getActionListeners() ) {
-            inventory.removeActionListener( al );
+        for( ActionListener al : this.saveButton.getActionListeners() ) {
+            saveButton.removeActionListener( al );
         }
-        inventory.addActionListener(actionListener);
+        saveButton.addActionListener(actionListener);
     }
 
     public void setHealth(int health) {
@@ -163,9 +156,8 @@ public class GUI {
     }
 
     public void setGameScreen(){
-        //Game Screen Set up
         Rectangle mainTextRectangle = new Rectangle(100, 90, windowW - 200, windowH - 390);
-        this.textBackground = Color.BLACK;//new Color(255,255,255, 50);
+        this.textBackground = Color.BLACK;
 
         this.mainTextPanel = new JPanel();
         this.mainTextPanel.setBounds(mainTextRectangle);
@@ -192,24 +184,17 @@ public class GUI {
         this.playerPanel = new JPanel();
         this.playerPanel.setBounds(50, 15, 700, 50);
         this.playerPanel.setBackground(Color.black);
-        //playerPanel.setLayout(new GridLayout(1,5));
         this.gameContainer.add(playerPanel);
 
         this.hpLabel = new JLabel("HP: 100             ");
         this.hpLabel.setFont(normalFont);
         this.hpLabel.setForeground(Color.white);
         this.playerPanel.add(hpLabel);
-//        hpLabelNum = new JLabel();
-//        hpLabelNum.setFont(normalFont);
-//        hpLabelNum.setForeground(Color.white);
-//        playerPanel.add(hpLabelNum);
 
         this.attackLabel = new JLabel("Attack: 999             ");
         this.attackLabel.setFont(normalFont);
         this.attackLabel.setForeground(Color.white);
         this.playerPanel.add(attackLabel);
-//        attackLabelNum = new JLabel();
-//        playerPanel.add(attackLabelNum);
 
         this.goldLabel = new JLabel("Gold: 9999");
         this.goldLabel.setFont(normalFont);
@@ -222,20 +207,20 @@ public class GUI {
         this.inventoryBtnPanel.setLayout(new GridLayout(1, 1));
         this.gameContainer.add(inventoryBtnPanel);
 
-        this.inventory = new JButton();
-        this.inventory.setBackground(textBackground);
-        this.inventory.setFocusPainted(false);
-        this.inventory.addActionListener(actionListener);
-        this.inventory.setActionCommand("Save");
+        this.saveButton = new JButton();
+        this.saveButton.setBackground(textBackground);
+        this.saveButton.setFocusPainted(false);
+        this.saveButton.addActionListener(actionListener);
+        this.saveButton.setActionCommand("Save");
         try {
             Image inventoryIcon = ImageIO.read(getClass().getResource("/resources/InventoryIcon.png"))
                     .getScaledInstance(45,45, Image.SCALE_DEFAULT);
             // Source: iconbros.com
-            this.inventory.setIcon(new ImageIcon(inventoryIcon));
+            this.saveButton.setIcon(new ImageIcon(inventoryIcon));
         } catch (Exception ex) {
             System.out.println("Icon Failed");
         }
-        this.inventoryBtnPanel.add(inventory);
+        this.inventoryBtnPanel.add(saveButton);
     }
 
 }
